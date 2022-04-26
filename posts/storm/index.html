@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/tclm.github.io\/posts\/storm\/"
-        },"genre": "posts","keywords": "开箱, 技术","wordcount":  8478 ,
+        },"genre": "posts","keywords": "开箱, 技术","wordcount":  8912 ,
         "url": "https:\/\/tclm.github.io\/posts\/storm\/","datePublished": "2018-11-10T16:35:43+08:00","dateModified": "2018-11-10T16:35:43+08:00","publisher": {
             "@type": "Organization",
             "name": "余赋"},"author": {
@@ -75,11 +75,11 @@
 <main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Storm开箱</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/tclm" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>余赋</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%BC%80%E7%AE%B1%E7%B3%BB%E5%88%97/"><i class="far fa-folder fa-fw"></i>开箱系列</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-11-10">2018-11-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8478 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 17 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-11-10">2018-11-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8912 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 18 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -89,14 +89,45 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#1什么是-storm">1.什么是 Storm?</a></li>
-        <li><a href="#2-hello-worldwordcounttopology">2. Hello World(WordCountTopology)</a></li>
-        <li><a href="#3-常用api">3. 常用API</a></li>
-        <li><a href="#4-基本概念">4. 基本概念</a></li>
-        <li><a href="#5-流分组策略">5. 流分组策略</a></li>
-        <li><a href="#6-并行度">6. 并行度</a></li>
-        <li><a href="#7-acker机制">7. Acker机制</a></li>
-        <li><a href="#8-参考资料">8. 参考资料</a></li>
+        <li>
+          <ul>
+            <li><a href="#1什么是-storm">1.什么是 Storm?</a></li>
+            <li><a href="#2-hello-worldwordcounttopology">2. Hello World(WordCountTopology)</a>
+              <ul>
+                <li><a href="#21-简介">2.1 简介</a></li>
+                <li><a href="#22-getting-started">2.2 Getting-Started</a></li>
+                <li><a href="#23-编写-sentencespoutjava">2.3 编写 SentenceSpout.java</a></li>
+                <li><a href="#24-编写-splitsentenceboltjava">2.4 编写 SplitSentenceBolt.java</a></li>
+                <li><a href="#25-编写-wordcountboltjava">2.5 编写 WordCountBolt.java</a></li>
+                <li><a href="#26-编写-reportboltjava">2.6 编写 ReportBolt.java</a></li>
+                <li><a href="#27-编写-appjava">2.7 编写 App.java</a></li>
+              </ul>
+            </li>
+            <li><a href="#3-常用api">3. 常用API</a>
+              <ul>
+                <li><a href="#31-spout">3.1 Spout</a></li>
+                <li><a href="#32-bolt">3.2 Bolt</a></li>
+                <li><a href="#33-topologybuilder">3.3 TopologyBuilder</a></li>
+              </ul>
+            </li>
+            <li><a href="#4-基本概念">4. 基本概念</a>
+              <ul>
+                <li><a href="#41-spout">4.1 spout</a></li>
+                <li><a href="#42-bolt">4.2 bolt</a></li>
+                <li><a href="#43-tuple">4.3 tuple</a></li>
+                <li><a href="#44-stream">4.4 Stream</a></li>
+                <li><a href="#45-topology">4.5 topology</a></li>
+                <li><a href="#46-worker">4.6 worker</a></li>
+                <li><a href="#47-executor">4.7 executor</a></li>
+                <li><a href="#48-task">4.8 task</a></li>
+              </ul>
+            </li>
+            <li><a href="#5-流分组策略">5. 流分组策略</a></li>
+            <li><a href="#6-并行度">6. 并行度</a></li>
+            <li><a href="#7-acker机制">7. Acker机制</a></li>
+            <li><a href="#8-参考资料">8. 参考资料</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -127,22 +158,124 @@
 <li>ReportBolt 接收并存储计结果，待程序结束运行后打印统计结果。</li>
 </ol>
 <p>流程：获取句子 -&gt; 拆分成单词 -&gt; 统计单词 -&gt; 输出报表</p>
-<pre tabindex="0"><code class="language-flow" data-lang="flow">st=&gt;start: Start
-op1=&gt;operation: SentenceSpout（获取并发射句子）
-op2=&gt;operation: SplitSentenceBolt（拆分并发送单词）
-op3=&gt;operation: WordCountBolt（统计单词并发送结果）
-op4=&gt;operation: ReportBolt （输出结果）
-e=&gt;end
-st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
-</code></pre><h4 id="22-getting-started">2.2 Getting-Started</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">st=&gt;start: Start
+</span></span><span class="line"><span class="cl">op1=&gt;operation: SentenceSpout（获取并发射句子）
+</span></span><span class="line"><span class="cl">op2=&gt;operation: SplitSentenceBolt（拆分并发送单词）
+</span></span><span class="line"><span class="cl">op3=&gt;operation: WordCountBolt（统计单词并发送结果）
+</span></span><span class="line"><span class="cl">op4=&gt;operation: ReportBolt （输出结果）
+</span></span><span class="line"><span class="cl">e=&gt;end
+</span></span><span class="line"><span class="cl">st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="22-getting-started">2.2 Getting-Started</h4>
 <p>在任意IDE中创建一个新的 Maven 项目，并在 pom.xml 添加 Apache Storm 依赖</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
 </span></span><span class="line"><span class="cl">		  <span class="nt">&lt;groupId&gt;</span>org.apache.storm<span class="nt">&lt;/groupId&gt;</span>
 </span></span><span class="line"><span class="cl">		  <span class="nt">&lt;artifactId&gt;</span>storm-core<span class="nt">&lt;/artifactId&gt;</span>
 </span></span><span class="line"><span class="cl">		  <span class="nt">&lt;version&gt;</span>1.2.1<span class="nt">&lt;/version&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h4 id="23-编写-sentencespoutjava">2.3 编写 SentenceSpout.java</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">spouts</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="23-编写-sentencespoutjava">2.3 编写 SentenceSpout.java</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">spouts</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
@@ -216,8 +349,71 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h4 id="24-编写-splitsentenceboltjava">2.4 编写 SplitSentenceBolt.java</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="24-编写-splitsentenceboltjava">2.4 编写 SplitSentenceBolt.java</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.OutputCollector</span><span class="o">;</span>
@@ -274,8 +470,81 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h4 id="25-编写-wordcountboltjava">2.5 编写 WordCountBolt.java</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="25-编写-wordcountboltjava">2.5 编写 WordCountBolt.java</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
@@ -342,8 +611,77 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h4 id="26-编写-reportboltjava">2.6 编写 ReportBolt.java</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="26-编写-reportboltjava">2.6 编写 ReportBolt.java</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
@@ -406,8 +744,94 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h4 id="27-编写-appjava">2.7 编写 App.java</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.Config</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="27-编写-appjava">2.7 编写 App.java</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.Config</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.LocalCluster</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.TopologyBuilder</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Fields</span><span class="o">;</span>
@@ -487,11 +911,38 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><hr>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
 <h3 id="3-常用api">3. 常用API</h3>
-<h5 id="31-spout">3.1 Spout</h5>
+<h4 id="31-spout">3.1 Spout</h4>
 <p>通常情况下，继承 org.apache.storm.topology.base.BaseRichSpout 重写以下三个方法即可实现一个 Spout。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="cm">/**
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">* open()方法中是ISpout接口中定义，在Spout组件初始化时被调用。
 </span></span></span><span class="line"><span class="cl"><span class="cm">* open()接受三个参数:一个包含Storm配置的Map;
 </span></span></span><span class="line"><span class="cl"><span class="cm">*                    一个TopologyContext对象;
@@ -512,9 +963,33 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 用于告诉Storm流组件将会发出那些数据流，每个流的tuple将包含的字段
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="n">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span>
-</span></span></code></pre></div><h5 id="32-bolt">3.2 Bolt</h5>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="32-bolt">3.2 Bolt</h4>
 <p>通常情况下，继承 org.apache.storm.topology.base.BaseRichBolt 重写以下三个方法即可实现一个 Bolt。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * prepare()方法类似于ISpout 的open()方法。
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 这个方法在blot初始化时调用，可以用来准备bolt用到的资源,比如数据库连接。
@@ -532,9 +1007,34 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 用于告诉Storm流组件将会发出那些数据流，每个流的tuple将包含的字段
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="n">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span>
-</span></span></code></pre></div><h5 id="33-topologybuilder">3.3 TopologyBuilder</h5>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="33-topologybuilder">3.3 TopologyBuilder</h4>
 <p>TopologyBuilder 用于创建一个 Topology（拓扑结构），Topology 实际就是 spout 和 bolt之间的关系定义.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 在Topology定义一个新的Spout
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *  id 用来在需要消费其产生的Tuple的Bolt订阅使用
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * parallelism_hint 定义executor的数量
@@ -553,7 +1053,9 @@ st-&gt;op1-&gt;op2-&gt;op3-&gt;op4-&gt;e
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 不同的 Grouping 执行方式不同，Storm默认提供七种不同的流分组策略，具体差异见 5. 流分组策略
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="n">BoltDeclarer</span><span class="o">.</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="n">String</span> <span class="n">componentId</span><span class="o">)</span>
-</span></span></code></pre></div><hr>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
 <h3 id="4-基本概念">4. 基本概念</h3>
 <p>熟悉了 Storm Hello World 和 常用的 API,现在了解一下 Storm 的一些基本概念。</p>
 <h4 id="41-spout">4.1 spout</h4>
@@ -590,7 +1092,34 @@ Storm 集群中，可以通过设置拓扑中每个 Spout 或 Bolt 的任务数�
 <hr>
 <h3 id="5-流分组策略">5. 流分组策略</h3>
 <p>根据选择的分组策略不同，task的执行方式有差异，Storm默认提供下面8种分组策略，也支持自定分组策略（customGrouping），关于自定义分组，在此不做讨论。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="c1">// 1.随机分组、轮询、平均分配,随机派发stream里面的tuple，保证每个bolt task接收到的tuple数目大致相同。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="c1">// 1.随机分组、轮询、平均分配,随机派发stream里面的tuple，保证每个bolt task接收到的tuple数目大致相同。
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS1&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 2.按字段分组，比如，按&#34;user-id&#34;这个字段来分组，那么具有同样&#34;user-id&#34;的 tuple 会被分到相同的Bolt里的一个task。
@@ -613,7 +1142,9 @@ Storm 集群中，可以通过设置拓扑中每个 Spout 或 Bolt 的任务数�
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 8.这种方式与按字段分组很相似，根据定义的域来对数据流进行分组，不同的是，这种方式会考虑下游 Bolt 数据处理的均衡性问题，在输入数据源关键字不平衡时会有更好的性能
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS8&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">partialKeyGrouping</span><span class="o">((</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&#34;number&#34;</span><span class="o">));</span>
-</span></span></code></pre></div><hr>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
 <h3 id="6-并行度">6. 并行度</h3>
 <p>并行度可以理解的同时执行的进程、线程、任务数量</p>
 <p><img
@@ -691,5 +1222,5 @@ BoltDeclarer.setNumTasks(Number)</p>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":1000},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
