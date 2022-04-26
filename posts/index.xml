@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - 余思所赋</title>
+        <link>https://tclm.github.io/posts/</link>
+        <description>所有文章 | 余思所赋</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>tclmcn@gmail.com (余赋)</managingEditor>
+            <webMaster>tclmcn@gmail.com (余赋)</webMaster><lastBuildDate>Sat, 10 Nov 2018 16:35:43 &#43;0800</lastBuildDate><atom:link href="https://tclm.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Storm开箱</title>
+    <link>https://tclm.github.io/posts/storm/</link>
+    <pubDate>Sat, 10 Nov 2018 16:35:43 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://tclm.github.io/posts/storm/</guid>
+    <description><![CDATA[1.什么是 Storm? Storm 是一个分布式的，可靠的，容错的数据流处理系统。 Storm 应用是由 Spout （上图水龙头） 和 Bolt （上图水滴） 构建成的Topology在Storm环]]></description>
+</item></channel>
+</rss>
