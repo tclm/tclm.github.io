@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>业余无线电呼号抄收练习 By:BD8FAA</title>
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #bd8faa;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 600px;
+            gap: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            color:#ba8faa
+        }
+        input[type="text"], select, button {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="button"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #BD8FAA;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>业余无线电呼号抄收练习</h1>
+    <h2><lable id='show'>??????<lable></h2>
+    <input type="text" id="textInput" style="display: none;">
+    <button onclick="speakText()">朗读</button>
+    <input type="text" id="textInputTwo" placeholder="请输入你听到的呼号">
+    <button onclick="submit()" >抄收</button>
+    <button onclick="gen()" id='nextButton' style="display: none;">下一个</button>
+
+    <div>
+        <label for="rate">播报模式:</label>
+        <select id="mode">
+            <option value='FULL'>完整CQ模式</option>
+            <option value='SIG'>1遍字母解释法</option>
+            <option value='TWO'>1遍呼号+1遍字母解释法</option>
+        </select>
+    </div>
+    <div style="display:none;">
+        <label for="rate">字母解释法:</label>
+        <select id="alpha_mode">
+            <option value='STD'>标准</option>
+            <option value='MIX'>混合(标准和非标字母解释法随机)</option>
+        </select>
+    </div>
+    <div>
+        <label for="gender">语音:</label>
+        <select id="gender">
+            <option value="Chinese Male">中文男声</option>
+            <option value="Chinese Female">中文女声</option>
+            <option value="UK English Male">英文男声</option>
+            <option value="UK English Female">英文女声</option>
+            <!--<option value="US English Female">英文女声-美音</option>-->
+            <!--<option value="US English Male">英文男声-美音</option>-->
+        </select>
+    </div>
+    <div>
+        <label for="rate">语速:</label>
+        <input type="range" id="rate" min="0.1" max="2.0" step="0.1" value="1.0">
+    </div>
+    <div>
+        CQCQCQ,这里是BD8FAA,73!
+    </div>
+
+    <script>
+        function submit(){
+            var inputValue = document.getElementById('textInputTwo').value;
+            if(inputValue){
+                inputValue = inputValue.toUpperCase().trim();
+                var text = document.getElementById('textInput').value;
+                if(inputValue == text){
+                    alert("抄收正确");
+                    var nextBtn = document.getElementById('nextButton');
+                    nextBtn.style.display='';
+                    var showLabel = document.getElementById('show');
+                    showLabel.textContent=text;
+                } else {
+                    alert("抄收错误,你可以重新播放");
+                }
+            } else {
+                alert("请输入你听到的呼号");
+            }
+        }
+
+        function gen(){
+            var text = generateRandomString();
+            var textInput = document.getElementById('textInput');
+            textInput.value = text;
+            var nextBtn = document.getElementById('nextButton');
+            nextBtn.style.display='none';
+            var textInputTwo = document.getElementById('textInputTwo');
+            textInputTwo.value='';
+            var showLabel = document.getElementById('show');
+            showLabel.textContent='??????';
+            speakText();
+        }
+
+        function speakText() {
+            var message1 = "CQ CQ CQ,这里是";
+            var message2 = "，正在呼叫频率上的友台，Over!";
+            var message3 = "CQ CQ CQ, this‘s ";
+            var message4 = "，Calling CQ And Standby, Over!";
+
+            var text = document.getElementById('textInput').value;
+            if(!text){
+                gen();
+                speakText();
+                return;
+            }
+
+            var mode = document.getElementById('mode').value;
+            var alpha_mode = document.getElementById('alpha_mode').value;
+            if (text) {
+                var gender = document.getElementById('gender').value;
+                var rate = parseFloat(document.getElementById('rate').value);
+                var voice = gender;
+                var message;
+                var fullText;
+                if(alpha_mode == 'STD') {
+                    fullText = phoneticAlphabet(text);
+                } else {
+                    fullText = phoneticAlphabet(text,true);
+                }
+
+                if(mode == 'FULL'){
+                    if(gender == 'Chinese Female' || gender == 'Chinese Male'){
+                        message = message1+text+","+text+","+fullText+message2;
+                    } else {
+                        message = message3+text+","+text+","+fullText+message4;
+                    }
+                } else if(mode == 'SIG'){
+                    message = fullText
+                } else {
+                    message = text +","+ fullText
+                }
+
+
+                responsiveVoice.speak(message, voice, { rate: rate });
+            } else {
+                alert("请输入要朗读的文字。");
+            }
+        }
+
+        function phoneticAlphabet(input, random = false) {
+            const alphabetMap = {
+                'A': ['Alpha', 'America'],
+                'B': ['Bravo', 'Boston'],
+                'C': ['Charlie', 'Canada', 'Comic'],
+                'D': ['Delta'],
+                'E': ['Echo'],
+                'F': ['Foxtrot'],
+                'G': ['Golf'],
+                'H': ['Hotel'],
+                'I': ['India'],
+                'J': ['Juliett'],
+                'K': ['Kilo'],
+                'L': ['Lima'],
+                'M': ['Mike'],
+                'N': ['November'],
+                'O': ['Oscar'],
+                'P': ['Papa'],
+                'Q': ['Quebec'],
+                'R': ['Romeo'],
+                'S': ['Sierra'],
+                'T': ['Tango'],
+                'U': ['Uniform'],
+                'V': ['Victor'],
+                'W': ['Whiskey'],
+                'X': ['X-ray'],
+                'Y': ['Yankee'],
+                'Z': ['Zulu'],
+                '1': ['One'],
+                '2': ['Two'],
+                '3': ['Three'],
+                '4': ['Four'],
+                '5': ['Five'],
+                '6': ['Six'],
+                '7': ['Seven'],
+                '8': ['Eight'],
+                '9': ['Nine'],
+                '0': ['Zero']
+            };
+
+            return input.split('').map(char => {
+                const charUppercase = char.toUpperCase();
+                if (random) {
+                    // 随机选择一个读音
+                    const randomIndex = Math.floor(Math.random() * alphabetMap[charUppercase].length);
+                    return alphabetMap[charUppercase][randomIndex];
+                } else {
+                    // 选择第一个读音
+                    return alphabetMap[charUppercase][0];
+                }
+            }).join(', ');
+        }
+
+        function generateRandomString() {
+            // 第三位为数字(0-9)
+            const thirdDigit = Math.floor(Math.random() * 10);
+
+            // 其余位数为大写字母(A-Z)
+            const randomLetter = () => String.fromCharCode(Math.floor(Math.random() * 26) + 'A'.charCodeAt(0));
+
+            let result = '';
+            for (let i = 0; i < 5; i++) {
+                result += randomLetter();
+            }
+
+            // 插入第三位数字
+            result = result.slice(0, 2) + thirdDigit + result.slice(2);
+
+            return result;
+        }
+
+    </script>
+    </div>
+</body>
+</html>
