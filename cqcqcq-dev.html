@@ -303,6 +303,7 @@
 
                 // 获取选中的 <option> 元素
                 var selectedVoice = voice.options[voice.selectedIndex];
+                alert(selectedVoice);
                 var isZH = selectedVoice.getAttribute("data-lang").startsWith('zh');
                 var isLocal = selectedVoice.getAttribute("is-local");
 
