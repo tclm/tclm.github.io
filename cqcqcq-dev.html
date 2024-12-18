@@ -166,7 +166,7 @@
 
     <div id="customAlert" class="custom-alert">
     <div class="alert-content">
-        <span id="alertMessage">抄收错误，你可以重新播放</span>
+        <span id="alertMessage"></span>
         <button onclick="closeAlert()">关闭</button>
     </div>
     </div>
@@ -204,6 +204,8 @@
         // 加载系统语音列表
         function loadSystemVoices() {
             if (checkSpeechSynthesisSupport()) {
+                // for ios 等不支持onvoiceschanged的浏览器
+                loadCustomOptions();
                 speechSynthesis.onvoiceschanged = function() {
                     const voices = speechSynthesis.getVoices();
                     const voiceSelect = document.getElementById('voice');
@@ -230,19 +232,9 @@
             }
         }
 
-        // 获取语音列表的方法
-        function getVoicesWithRetry() {
-            const voices = speechSynthesis.getVoices();
-            if (voices.length === 0) {
-                // 如果列表为空，延迟一段时间后重试
-                setTimeout(getVoicesWithRetry, 500); // 每100毫秒重试一次
-            }
-        }
-
         // 页面加载时执行
         document.addEventListener('DOMContentLoaded', function() {
             loadSystemVoices();  // 检查并加载语音列表或自定义选项
-            getVoicesWithRetry(); // for ios
         });
 
         // 默认选中第一个 data-lang 以 'en' 开头的选项
