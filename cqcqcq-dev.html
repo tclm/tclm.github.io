@@ -208,7 +208,7 @@
                 speechSynthesis.onvoiceschanged = function() {
                     const voices = speechSynthesis.getVoices();
                     const voiceSelect = document.getElementById('voice');
-
+                    alert(voices.length);
                     if (voices.length > 0) {
                         voiceSelect.innerHTML = ''; // 清空现有选项
 
