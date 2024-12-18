@@ -174,49 +174,69 @@
 
     <script>
 
-        // 获取可用的语音并填充到 select 中
-        function populateVoices() {
-            const select = document.getElementById('voice');
-            const voices = speechSynthesis.getVoices();
-
-            // 清空现有的选项
-            select.innerHTML = '';
-
-            // 遍历所有语音并添加到 select 元素
-            voices.forEach((voice,index) => {
-                const option = document.createElement('option');
-                option.textContent = voice.name + ' (' + voice.lang + ')'; // 显示语音名称和语言
-                option.value = voice.name; // 设置选项的值为语音的名称
-                option.setAttribute('data-index', index); // 添加序号属性
-                option.setAttribute('data-lang', voice.lang); // 添加语言属性
-                option.setAttribute('is-local', true); // 添加语言属性
-                select.appendChild(option); // 将选项添加到 select 中
-            });
-
-
-            // 先添加手动定义的选项
-            const predefinedVoices = [
-                { value: 'Chinese Male', label: '中文男声', isLocal: false, dataLang:'zh'},
-                { value: 'Chinese Female', label: '中文女声', isLocal: false, dataLang:'zh'},
-                { value: 'UK English Male', label: '英文男声', isLocal: false, dataLang:'en'},
-                { value: 'UK English Female', label: '英文女声', isLocal: false, dataLang:'en'}
-            ];
-
-            // 添加自定义预定义语音选项
-            predefinedVoices.forEach(voice => {
-                const option = document.createElement('option');
-                option.value = voice.value;
-                option.textContent = voice.label;
-                option.setAttribute('is-local', voice.isLocal);  // 自定义属性
-                option.setAttribute('data-lang', voice.dataLang);  // 自定义属性
-                select.appendChild(option);
-            });
-
-            // 默认选中第一个 data-lang 为 zh 开头的选项
-            setDefaultVoice(select);
+        // 检测浏览器是否支持 speechSynthesis API
+        function checkSpeechSynthesisSupport() {
+            return 'speechSynthesis' in window;
         }
 
-        // 默认选中第一个 data-lang 以 'zh' 开头的选项
+        // 动态加载自定义选项
+        function loadCustomOptions() {
+            const voiceSelect = document.getElementById('voice');
+            const customVoices = [
+                { value: "Chinese Male", text: "中文男声", lang: "zh-CN", isLocal: false },
+                { value: "Chinese Female", text: "中文女声", lang: "zh-CN", isLocal: false },
+                { value: "UK English Male", text: "英文男声", lang: "en-GB", isLocal: false },
+                { value: "UK English Female", text: "英文女声", lang: "en-GB", isLocal: false }
+            ];
+
+            customVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = voice.value;
+                option.textContent = voice.text;
+                option.setAttribute('data-lang', voice.lang);
+                option.setAttribute('is-local', voice.isLocal);
+                voiceSelect.appendChild(option);
+            });
+            // 默认选中第一个 data-lang 为 en 开头的选项
+            setDefaultVoice(voiceSelect);
+        }
+
+        // 加载系统语音列表
+        function loadSystemVoices() {
+            if (checkSpeechSynthesisSupport()) {
+                speechSynthesis.onvoiceschanged = function() {
+                    const voices = speechSynthesis.getVoices();
+                    const voiceSelect = document.getElementById('voice');
+
+                    if (voices.length > 0) {
+                        voiceSelect.innerHTML = ''; // 清空现有选项
+
+                        // 添加系统语音选项
+                        voices.forEach((voice,index) => {
+                            const option = document.createElement('option');
+                            option.value = voice.name;
+                            option.textContent = `${voice.name} (${voice.lang})`;
+                            option.setAttribute('data-index', index); // 添加序号属性
+                            option.setAttribute('data-lang', voice.lang);
+                            option.setAttribute('is-local', true);
+                            voiceSelect.appendChild(option);
+                        });
+                    }
+                    // 最后加载自定义选项
+                    loadCustomOptions();
+                };
+            } else {
+                // 如果不支持 speechSynthesis，直接加载自定义选项
+                loadCustomOptions();
+            }
+        }
+
+        // 页面加载时执行
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSystemVoices();  // 检查并加载语音列表或自定义选项
+        });
+
+        // 默认选中第一个 data-lang 以 'en' 开头的选项
         function setDefaultVoice(select) {
             const options = select.options;
             for (let i = 0; i < options.length; i++) {
@@ -227,12 +247,6 @@
                 }
             }
         }
-
-        // 监听 voiceschanged 事件，确保语音列表加载完成后再进行操作
-        speechSynthesis.onvoiceschanged = populateVoices;
-
-        // 在页面加载时调用 populateVoices 确保在某些浏览器中已经加载完语音
-        populateVoices();
 
         function submit(){
             var inputValue = document.getElementById('textInputTwo').value;
