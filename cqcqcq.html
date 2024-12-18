@@ -18,15 +18,17 @@
     <style>
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start; /* 将内容对齐到顶部 */
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* 使用 min-height 保证页面不会被压缩 */
             font-family: Arial, sans-serif;
             margin: 0;
             background-color: #bd8faa;
             color: #333;
             padding: 20px;
         }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -37,7 +39,9 @@
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px; /* 给容器顶部添加一些间距 */
         }
+
         h1 {
             text-align: center;
         }
