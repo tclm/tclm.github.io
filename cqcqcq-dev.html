@@ -336,6 +336,7 @@
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
                     speechSynthesis.speak(utterance);
                 } else {
+                    alert("远程播放:"+message+":"+selectedVoice.value);
                     console.log("远程播放:"+message);
                     responsiveVoice.speak(message, selectedVoice.value, { rate: rate,pitch:pitch });
                 }
