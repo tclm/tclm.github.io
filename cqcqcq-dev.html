@@ -207,6 +207,7 @@
             if (checkSpeechSynthesisSupport()) {
                 speechSynthesis.onvoiceschanged = function() {
                     const voices = speechSynthesis.getVoices();
+                    alert(voices);
                     const voiceSelect = document.getElementById('voice');
                     alert(voices.length);
                     if (voices.length > 0) {
