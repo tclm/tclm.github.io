@@ -320,11 +320,9 @@
                     message = spkText +"，"+ fullText
                 }
 
-
-                // 获取可用的语音列表
-                const voices = speechSynthesis.getVoices();
-
                 if(isLocal === 'true'){
+                    // 获取可用的语音列表
+                    const voices = speechSynthesis.getVoices();
                     console.log("本地播放:"+message);
                     if(speechSynthesis.speaking){
                         console.log("本地播放中");
