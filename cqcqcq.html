@@ -191,12 +191,17 @@
             ];
 
             customVoices.forEach((voice, index) => {
-                const option = document.createElement('option');
-                option.value = voice.value;
-                option.textContent = voice.text;
-                option.setAttribute('data-lang', voice.lang);
-                option.setAttribute('is-local', voice.isLocal);
-                voiceSelect.appendChild(option);
+                // 检查是否已经有相同 value 的选项
+                const existingOption = Array.from(voiceSelect.options).find(option => option.value === voice.value);
+                if (!existingOption){
+                    const option = document.createElement('option');
+                    option.value = voice.value;
+                    option.textContent = voice.text;
+                    option.setAttribute('data-lang', voice.lang);
+                    option.setAttribute('is-local', voice.isLocal);
+                    voiceSelect.appendChild(option);
+                }
+
             });
             // 默认选中第一个 data-lang 为 en 开头的选项
             setDefaultVoice(voiceSelect);
