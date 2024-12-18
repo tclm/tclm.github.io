@@ -176,6 +176,7 @@
 
         // 检测浏览器是否支持 speechSynthesis API
         function checkSpeechSynthesisSupport() {
+            alert('speechSynthesis' in window);
             return 'speechSynthesis' in window;
         }
 
@@ -303,7 +304,6 @@
 
                 // 获取选中的 <option> 元素
                 var selectedVoice = voice.options[voice.selectedIndex];
-                alert(selectedVoice);
                 var isZH = selectedVoice.getAttribute("data-lang").startsWith('zh');
                 var isLocal = selectedVoice.getAttribute("is-local");
 
@@ -321,11 +321,9 @@
                     message = spkText +"，"+ fullText
                 }
 
-
-                // 获取可用的语音列表
-                const voices = speechSynthesis.getVoices();
-
                 if(isLocal === 'true'){
+                    // 获取可用的语音列表
+                    const voices = speechSynthesis.getVoices();
                     console.log("本地播放:"+message);
                     if(speechSynthesis.speaking){
                         console.log("本地播放中");
@@ -337,7 +335,6 @@
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
                     speechSynthesis.speak(utterance);
                 } else {
-                    alert("远程播放:"+message+":"+selectedVoice.value);
                     console.log("远程播放:"+message);
                     responsiveVoice.speak(message, selectedVoice.value, { rate: rate,pitch:pitch });
                 }
