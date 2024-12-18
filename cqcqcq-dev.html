@@ -127,9 +127,10 @@
     <div>
         <label for="rate">播报模式：</label>
         <select id="mode">
-            <option value='FULL'>完整CQ模式</option>
+            <option value='THREE'>2遍呼号+1遍字母解释法</option>
             <option value='SIG'>1遍字母解释法</option>
             <option value='TWO'>1遍呼号+1遍字母解释法</option>
+            <option value='FULL'>完整CQ模式</option>
         </select>
     </div>
     <div>
@@ -157,7 +158,7 @@
     </div>
     <div class="thank-you-container" style=''>
         <p style="color: #ba8faa; font-size: 14px;">
-            特别感谢以下朋友对本项目的宝贵建议和改进意见：
+            特别感谢友台们对本项目的宝贵建议和改进意见：
         </p>
         <p style="font-weight: bold; color: #ba8fdd;">
             BD8AJV、BDKAVK、BD8FBI ......
@@ -319,6 +320,8 @@
                     message = fullText
                 } else if(mode == 'TWO') {
                     message = spkText +"，"+ fullText
+                } else if(mode == 'THREE') {
+                    message = spkText +"，"+spkText +"，"+ fullText
                 }
 
                 if(isLocal === 'true'){
@@ -338,7 +341,6 @@
                     console.log("远程播放:"+message);
                     responsiveVoice.speak(message, selectedVoice.value, { rate: rate,pitch:pitch });
                 }
-
             } else {
                 gen();
             }
