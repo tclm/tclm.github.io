@@ -176,7 +176,6 @@
 
         // 检测浏览器是否支持 speechSynthesis API
         function checkSpeechSynthesisSupport() {
-            alert('speechSynthesis' in window);
             return 'speechSynthesis' in window;
         }
 
@@ -207,9 +206,7 @@
             if (checkSpeechSynthesisSupport()) {
                 speechSynthesis.onvoiceschanged = function() {
                     const voices = speechSynthesis.getVoices();
-                    alert(voices);
                     const voiceSelect = document.getElementById('voice');
-                    alert(voices.length);
                     if (voices.length > 0) {
                         voiceSelect.innerHTML = ''; // 清空现有选项
 
@@ -233,9 +230,19 @@
             }
         }
 
+        // 获取语音列表的方法
+        function getVoicesWithRetry() {
+            const voices = speechSynthesis.getVoices();
+            if (voices.length === 0) {
+                // 如果列表为空，延迟一段时间后重试
+                setTimeout(getVoicesWithRetry, 500); // 每100毫秒重试一次
+            }
+        }
+
         // 页面加载时执行
         document.addEventListener('DOMContentLoaded', function() {
             loadSystemVoices();  // 检查并加载语音列表或自定义选项
+            getVoicesWithRetry(); // for ios
         });
 
         // 默认选中第一个 data-lang 以 'en' 开头的选项
@@ -327,7 +334,7 @@
                     const voices = speechSynthesis.getVoices();
                     console.log("本地播放:"+message);
                     if(speechSynthesis.speaking){
-                        console.log("本地播放中");
+                        console.log("本地播放中,取消.");
                         speechSynthesis.cancel();
                     }
                     var utterance = new SpeechSynthesisUtterance(message);
