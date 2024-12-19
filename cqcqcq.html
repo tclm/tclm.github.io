@@ -119,6 +119,7 @@
     <h1>业余无线电呼号抄收练习</h1>
     <h2><lable id='show'>??????<lable></h2>
     <input type="text" id="textInput" style="display: none;">
+    <div id="timer" style="font-size: 12px; color: #bd8faa; text-align: right; margin-top: 0px;">0.0</div>
     <button id='speakBtn' onclick="speakText()">播报</button>
     <input type="text" id="textInputTwo" placeholder="请输入你听到的呼号">
     <button onclick="submit()" >抄收</button>
@@ -152,7 +153,7 @@
     </div>
     <div>
         <label for="rate">语速：</label>
-        <input type="range" id="rate" min="0.1" max="1.6" step="0.1" value="1.0">
+        <input type="range" id="rate" min="0.1" max="1.5" step="0.1" value="1.0">
     </div>
     <div>
         <label for="rate">语调：</label>
@@ -224,8 +225,8 @@
                 speechSynthesis.onvoiceschanged = function() {
                     const voices = speechSynthesis.getVoices();
                     const voiceSelect = document.getElementById('voice');
+                    voiceSelect.innerHTML = ''; // 清空现有选项
                     if (voices.length > 0) {
-                        voiceSelect.innerHTML = ''; // 清空现有选项
 
                         // 添加系统语音选项
                         voices.forEach((voice,index) => {
@@ -283,7 +284,7 @@
             }
         }
 
-        function gen(){
+        function gen() {
             var text = generateRandomString();
             var textInput = document.getElementById('textInput');
             textInput.value = text;
@@ -295,6 +296,8 @@
             showLabel.textContent='??????';
             speakText();
         }
+
+        var timerInterval;
 
         function speakText() {
             var message1 = "CQ CQ CQ，这里是";
@@ -340,6 +343,19 @@
                     message = spkText +"，"+spkText +"，"+ fullText
                 }
 
+                // 计时器
+                var timer = 0;
+
+                if(timerInterval){
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                // 启动计时器
+                timerInterval = setInterval(function() {
+                    timer += 0.1;
+                    document.getElementById('timer').textContent = timer.toFixed(1);
+                }, 100);
+
                 if(isLocal === 'true'){
                     // 获取可用的语音列表
                     const voices = speechSynthesis.getVoices();
@@ -355,17 +371,22 @@
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
                     utterance.onstart = function(event) {
                         console.log('本地播放开始');
-                        openNoise();
+                        onStartCallBack();
                     };
                     utterance.onend = function(event) {
                         console.log('本地播放完成');
-                        stopNoise();
+                        onEndCallBack();
                     };
-
                     speechSynthesis.speak(utterance);
                 } else {
                     console.log("远程播放:"+message);
-                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:openNoise, onend: stopNoise});
+                    if(responsiveVoice.isPlaying()){
+                        responsiveVoice.cancel();
+                        stopNoise();
+                    }
+                    responsiveVoice.enableEstimationTimeout = false;
+                    responsiveVoice.enableWindowClickHook();
+                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:onStartCallBack, onend: onEndCallBack});
                 }
             } else {
                 gen();
@@ -458,7 +479,7 @@
 
         function splitStringByComma(input) {
             // 将输入字符串转换为数组，然后使用 join 方法将每个字符用逗号连接起来
-            return input.split('').join('');
+            return input.split('').join('-');
         }
 
         function showAlert(message) {
@@ -473,6 +494,17 @@
             alertBox.style.display = 'none';
         }
 
+        function onStartCallBack(){
+            openNoise();
+        }
+        function onEndCallBack(){
+            if(timerInterval){
+                // 停止计时器
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            stopNoise();
+        }
     </script>
     <script>
         let audioContext;
@@ -526,8 +558,6 @@
             }
         }
 
-        // document.getElementById('speakBtn').addEventListener('click',openNoise());
-
         function stopNoise() {
             if (audioContext && oscillator) {
                 console.log("关闭背噪");
@@ -536,8 +566,6 @@
                     audioContext = null;
                     oscillator = null;
                     gainNode = null;
-                    // 禁用关闭按钮
-                    // document.getElementById('stopButton').disabled = true;
                 });
             }
         }
