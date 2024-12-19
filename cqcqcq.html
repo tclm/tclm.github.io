@@ -135,9 +135,10 @@
     </div>
     <div>
         <label for="rate">字母解释法：</label>
-        <label><input type='checkbox' id='alpha_mode_STD' checked='true'/> 标准</label>
-        <label><input type='checkbox' id='alpha_mode_PN' /> 地名</label>
-        <label><input type='checkbox' id='alpha_mode_OTHER' /> 其他</label>
+        <label><input type='checkbox' id='alpha_mode_STD' checked='true'/> 标准解释法</label>
+        <label><input type='checkbox' id='alpha_mode_DSTD' /> 常用非标解释法</label>
+        <label><input type='checkbox' id='alpha_mode_PN' /> 地名解释法</label>
+        <label><input type='checkbox' id='alpha_mode_OTHER' /> 其他解释法</label>
     </div>
     <div>
         <label for="voice">语音：</label>
@@ -161,7 +162,7 @@
             特别感谢友台们对本项目的宝贵建议和改进意见：
         </p>
         <p style="font-weight: bold; color: #ba8fdd;">
-            BD8AJV、BDKAVK、BD8FBI、BD8DMC ......
+            BD8AJV、BDKAVK、BD8FBI、BD8DMC、BD8DOK、BD8DFK ......
         </p>
     </div>
 
@@ -302,10 +303,11 @@
                 var pitch = parseFloat(document.getElementById('pitch').value);
 
                 var amStd = document.getElementById('alpha_mode_STD').checked;
+                var amDstd = document.getElementById('alpha_mode_DSTD').checked;
                 var amPn = document.getElementById('alpha_mode_PN').checked;
                 var amOther = document.getElementById('alpha_mode_OTHER').checked;
 
-                var fullText = phoneticAlphabet(text,amStd,amPn,amOther);
+                var fullText = phoneticAlphabet(text,amStd,amDstd,amPn,amOther);
                 var spkText = splitStringByComma(text);
 
                 // 获取选中的 <option> 元素
@@ -352,50 +354,51 @@
         }
 
         const alphabetMap = {
-            'A': { 'STD': ['Alpha'], 'PN': ['America'], 'OTHER': ['Able'] },
-            'B': { 'STD': ['Bravo'], 'PN': ['Boston'], 'OTHER': ['Baker'] },
-            'C': { 'STD': ['Charlie'], 'PN': ['Canada'], 'OTHER': ['China'] },
-            'D': { 'STD': ['Delta'], 'PN': ['Denmark'], 'OTHER': ['David'] },
-            'E': { 'STD': ['Echo'], 'PN': ['England'], 'OTHER': ['Easy'] },
-            'F': { 'STD': ['Foxtrot'], 'PN': ['Florida'], 'OTHER': ['Francis'] },
-            'G': { 'STD': ['Golf'], 'PN': ['Germany'], 'OTHER': ['Guatemala'] },
-            'H': { 'STD': ['Hotel'], 'PN': ['Honolulu'], 'OTHER': ['Henry'] },
-            'I': { 'STD': ['India'], 'PN': ['Italy'], 'OTHER': ['Indian'] },
-            'J': { 'STD': ['Juliet'], 'PN': ['Japan'], 'OTHER': ['Juliett'] },
-            'K': { 'STD': ['Kilo'], 'PN': ['Kentucky'], 'OTHER': ['King'] },
-            'L': { 'STD': ['Lima'], 'PN': ['London'], 'OTHER': ['Lucy'] },
-            'M': { 'STD': ['Mike'], 'PN': ['Mexico'], 'OTHER': ['Mary'] },
-            'N': { 'STD': ['November'], 'PN': ['Norway'], 'OTHER': ['Nancy'] },
-            'O': { 'STD': ['Oscar'], 'PN': ['Ontaria'], 'OTHER': ['Ocean'] },
-            'P': { 'STD': ['Papa'], 'PN': ['Paraguay'], 'OTHER': ['Peter'] },
-            'Q': { 'STD': ['Quebec'], 'PN': ['Quebec'], 'OTHER': ['Queen'] },
-            'R': { 'STD': ['Romeo'], 'PN': ['Rotterdam'], 'OTHER': ['Radio'] },
-            'S': { 'STD': ['Sierra'], 'PN': ['Santiago'], 'OTHER': ['Sugar'] },
-            'T': { 'STD': ['Tango'], 'PN': ['Tokyo'], 'OTHER': ['Texas'] },
-            'U': { 'STD': ['Uniform'], 'PN': ['Uruguay'], 'OTHER': ['United'] },
-            'V': { 'STD': ['Victor'], 'PN': ['Virginia'], 'OTHER': ['Victoria'] },
-            'W': { 'STD': ['Whisky'], 'PN': ['Washington'], 'OTHER': ['Winnie'] },
-            'X': { 'STD': ['X-ray'], 'PN': ['X-ray'], 'OTHER': ['X-ray'] },
-            'Y': { 'STD': ['Yankee'], 'PN': ['Yokohama'], 'OTHER': ['Yesterday'] },
-            'Z': { 'STD': ['Zulu'], 'PN': ['Zanzibal'], 'OTHER': ['Zebra'] },
-            '1': { 'STD': ['One'], 'PN': ['One'], 'OTHER': ['One'] },
-            '2': { 'STD': ['Two'], 'PN': ['Two'], 'OTHER': ['Two'] },
-            '3': { 'STD': ['Three'], 'PN': ['Three'], 'OTHER': ['Three']},
-            '4': { 'STD': ['Four'], 'PN': ['Four'], 'OTHER': ['Four'] },
-            '5': { 'STD': ['Five'], 'PN': ['Five'], 'OTHER': ['Five'] },
-            '6': { 'STD': ['Six'], 'PN': ['Six'], 'OTHER': ['Six'] },
-            '7': { 'STD': ['Seven'], 'PN': ['Seven'], 'OTHER': ['Seven'] },
-            '8': { 'STD': ['Eight'], 'PN': ['Eight'], 'OTHER': ['Eight'] },
-            '9': { 'STD': ['Nine'], 'PN': ['Nine'], 'OTHER': ['Nine'] },
-            '0': { 'STD': ['Zero'], 'PN': ['Zero'], 'OTHER': ['Zero'] }
+            'A': { 'STD': ['Alpha'],'DSTD': ['America'], 'PN': ['America'], 'OTHER': ['Able'] },
+            'B': { 'STD': ['Bravo'],'DSTD': ['Boston'], 'PN': ['Boston'], 'OTHER': ['Baker'] },
+            'C': { 'STD': ['Charlie'],'DSTD': ['Canada'], 'PN': ['Canada'], 'OTHER': ['China'] },
+            'D': { 'STD': ['Delta'],'DSTD': ['Denmark'], 'PN': ['Denmark'], 'OTHER': ['David'] },
+            'E': { 'STD': ['Echo'],'DSTD': ['England'], 'PN': ['England'], 'OTHER': ['Easy'] },
+            'F': { 'STD': ['Foxtrot'],'DSTD': ['Florida'], 'PN': ['Florida'], 'OTHER': ['Francis'] },
+            'G': { 'STD': ['Golf'],'DSTD': ['Germany'], 'PN': ['Germany'], 'OTHER': ['Guatemala'] },
+            'H': { 'STD': ['Hotel'],'DSTD': ['Honolulu'], 'PN': ['Honolulu'], 'OTHER': ['Henry'] },
+            'I': { 'STD': ['India'],'DSTD': ['Italy'], 'PN': ['Italy'], 'OTHER': ['Indian'] },
+            'J': { 'STD': ['Juliet'],'DSTD': ['Japan'], 'PN': ['Japan'], 'OTHER': ['Juliett'] },
+            'K': { 'STD': ['Kilo'],'DSTD': ['Kilowatt'], 'PN': ['Kentucky'], 'OTHER': ['King'] },
+            'L': { 'STD': ['Lima'],'DSTD': ['London'], 'PN': ['London'], 'OTHER': ['Lucy'] },
+            'M': { 'STD': ['Mike'],'DSTD': ['Mexico'], 'PN': ['Mexico'], 'OTHER': ['Mary'] },
+            'N': { 'STD': ['November'],'DSTD': ['Norway'], 'PN': ['Norway'], 'OTHER': ['Nancy'] },
+            'O': { 'STD': ['Oscar'],'DSTD': ['Ontaria'], 'PN': ['Ontaria'], 'OTHER': ['Ocean'] },
+            'P': { 'STD': ['Papa'],'DSTD': ['Peter'], 'PN': ['Paraguay'], 'OTHER': ['Peter'] },
+            'Q': { 'STD': ['Quebec'],'DSTD': ['Queen'], 'PN': ['Quebec'], 'OTHER': ['Queen'] },
+            'R': { 'STD': ['Romeo'],'DSTD': ['Radio'], 'PN': ['Rotterdam'], 'OTHER': ['Radio'] },
+            'S': { 'STD': ['Sierra'],'DSTD': ['Sugar'], 'PN': ['Santiago'], 'OTHER': ['Sugar'] },
+            'T': { 'STD': ['Tango'],'DSTD': ['Tokyo'], 'PN': ['Tokyo'], 'OTHER': ['Texas'] },
+            'U': { 'STD': ['Uniform'],'DSTD': ['United'], 'PN': ['Uruguay'], 'OTHER': ['United'] },
+            'V': { 'STD': ['Victor'],'DSTD': ['Virginia'], 'PN': ['Virginia'], 'OTHER': ['Victoria'] },
+            'W': { 'STD': ['Whisky'],'DSTD': ['Washington'], 'PN': ['Washington'], 'OTHER': ['Winnie'] },
+            'X': { 'STD': ['X-ray'],'DSTD': ['X-ray'], 'PN': ['X-ray'], 'OTHER': ['X-ray'] },
+            'Y': { 'STD': ['Yankee'],'DSTD': ['Yokohama'], 'PN': ['Yokohama'], 'OTHER': ['Yesterday'] },
+            'Z': { 'STD': ['Zulu'],'DSTD': ['Zanzibal'], 'PN': ['Zanzibal'], 'OTHER': ['Zebra'] },
+            '1': { 'STD': ['One'],'DSTD': ['One'], 'PN': ['One'], 'OTHER': ['One'] },
+            '2': { 'STD': ['Two'],'DSTD': ['Two'], 'PN': ['Two'], 'OTHER': ['Two'] },
+            '3': { 'STD': ['Three'],'DSTD': ['Three'], 'PN': ['Three'], 'OTHER': ['Three']},
+            '4': { 'STD': ['Four'],'DSTD': ['Four'], 'PN': ['Four'], 'OTHER': ['Four'] },
+            '5': { 'STD': ['Five'],'DSTD': ['Five'], 'PN': ['Five'], 'OTHER': ['Five'] },
+            '6': { 'STD': ['Six'],'DSTD': ['Six'], 'PN': ['Six'], 'OTHER': ['Six'] },
+            '7': { 'STD': ['Seven'],'DSTD': ['Seven'], 'PN': ['Seven'], 'OTHER': ['Seven'] },
+            '8': { 'STD': ['Eight'],'DSTD': ['Eight'], 'PN': ['Eight'], 'OTHER': ['Eight'] },
+            '9': { 'STD': ['Nine'],'DSTD': ['Nine'], 'PN': ['Nine'], 'OTHER': ['Nine'] },
+            '0': { 'STD': ['Zero'],'DSTD': ['Zero'], 'PN': ['Zero'], 'OTHER': ['Zero'] }
         };
 
-        function phoneticAlphabet(input, STD = false, PN = false, OTHER = false) {
+        function phoneticAlphabet(input, STD = false,DSTD = false, PN = false, OTHER = false) {
             return input.split('').map(char => {
                 // 检查字符是否存在映射
                 if (alphabetMap[char]) {
                     let options = [];
                     if (STD) options.push('STD');
+                    if (DSTD) options.push('DSTD');
                     if (PN) options.push('PN');
                     if (OTHER) options.push('OTHER');
 
