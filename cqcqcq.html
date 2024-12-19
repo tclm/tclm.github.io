@@ -353,6 +353,10 @@
                     utterance.volume = volume;
                     utterance.pitch = pitch;
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
+                    utterance.onstart = function(event) {
+                        console.log('本地播放开始');
+                        openNoise();
+                    };
                     utterance.onend = function(event) {
                         console.log('本地播放完成');
                         stopNoise();
@@ -361,7 +365,7 @@
                     speechSynthesis.speak(utterance);
                 } else {
                     console.log("远程播放:"+message);
-                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch, onend: stopNoise});
+                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:openNoise, onend: stopNoise});
                 }
             } else {
                 gen();
@@ -475,9 +479,8 @@
         let oscillator;
         let gainNode;
 
-        document.getElementById('speakBtn').addEventListener('click', async () => {
+        function openNoise(){
             var noiseSwitch = parseFloat(document.getElementById('noiseVolume').value) != 0;
-
             if (noiseSwitch && !audioContext) {
                 console.log("开启背噪");
                 // 创建一个新的 AudioContext
@@ -485,7 +488,7 @@
 
                 // 检查 AudioContext 是否被暂停
                 if (audioContext.state === 'suspended') {
-                    await audioContext.resume();
+                    audioContext.resume();
                 }
 
                 // 创建一个 ScriptProcessorNode 并连接到输出
@@ -520,14 +523,14 @@
                 oscillator.connect(scriptNode);
                 oscillator.start();
 
-                // 启用关闭按钮
-                // document.getElementById('stopButton').disabled = false;
             }
-        });
+        }
+
+        // document.getElementById('speakBtn').addEventListener('click',openNoise());
 
         function stopNoise() {
-            console.log("关闭背噪");
             if (audioContext && oscillator) {
+                console.log("关闭背噪");
                 oscillator.stop();
                 audioContext.close().then(() => {
                     audioContext = null;
