@@ -119,7 +119,7 @@
     <h1>业余无线电呼号抄收练习</h1>
     <h2><lable id='show'>??????<lable></h2>
     <input type="text" id="textInput" style="display: none;">
-    <button onclick="speakText()">播报</button>
+    <button id='speakBtn' onclick="speakText()">播报</button>
     <input type="text" id="textInputTwo" placeholder="请输入你听到的呼号">
     <button onclick="submit()" >抄收</button>
     <button onclick="gen()" id='nextButton' style="display: none;">下一个</button>
@@ -136,6 +136,7 @@
     <div>
         <label for="rate">字母解释法：</label>
         <label><input type='checkbox' id='alpha_mode_STD' checked='true'/> 标准</label>
+        <label><input type='checkbox' id='alpha_mode_DSTD' /> 常用非标</label>
         <label><input type='checkbox' id='alpha_mode_PN' /> 地名</label>
         <label><input type='checkbox' id='alpha_mode_OTHER' /> 其他</label>
     </div>
@@ -146,12 +147,20 @@
         </select>
     </div>
     <div>
+        <label for="rate">音量：</label>
+        <input type="range" id="volume" min="0.1" max="1" step="0.01" value="1.0">
+    </div>
+    <div>
         <label for="rate">语速：</label>
         <input type="range" id="rate" min="0.1" max="1.6" step="0.1" value="1.0">
     </div>
     <div>
         <label for="rate">语调：</label>
         <input type="range" id="pitch" min="0.1" max="2.0" step="0.1" value="1.0">
+    </div>
+    <div>
+        <label for="rate">背噪：</label>
+        <input type="range" id="noiseVolume" min="0" max="1.0" step="0.01" value="0">
     </div>
     <div>
         <h3>CQCQCQ，这里是BD8FAA，祝各位通联愉快，73！<h3/>
@@ -161,7 +170,7 @@
             特别感谢友台们对本项目的宝贵建议和改进意见：
         </p>
         <p style="font-weight: bold; color: #ba8fdd;">
-            BD8AJV、BDKAVK、BD8FBI ......
+            BD8AJV、BD8AVK、BD8FBI、BD8DMC、BD8DOK、BD8DFK ......
         </p>
     </div>
 
@@ -298,14 +307,16 @@
             if (text) {
                 var mode = document.getElementById('mode').value;
                 var voice = document.getElementById('voice');
+                var volume = parseFloat(document.getElementById('volume').value);
                 var rate = parseFloat(document.getElementById('rate').value);
                 var pitch = parseFloat(document.getElementById('pitch').value);
 
                 var amStd = document.getElementById('alpha_mode_STD').checked;
+                var amDstd = document.getElementById('alpha_mode_DSTD').checked;
                 var amPn = document.getElementById('alpha_mode_PN').checked;
                 var amOther = document.getElementById('alpha_mode_OTHER').checked;
 
-                var fullText = phoneticAlphabet(text,amStd,amPn,amOther);
+                var fullText = phoneticAlphabet(text,amStd,amDstd,amPn,amOther);
                 var spkText = splitStringByComma(text);
 
                 // 获取选中的 <option> 元素
@@ -339,63 +350,71 @@
                     }
                     var utterance = new SpeechSynthesisUtterance(message);
                     utterance.rate = rate;
+                    utterance.volume = volume;
                     utterance.pitch = pitch;
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
+                    utterance.onend = function(event) {
+                        console.log('本地播放完成');
+                        stopNoise();
+                    };
+
                     speechSynthesis.speak(utterance);
                 } else {
                     console.log("远程播放:"+message);
-                    responsiveVoice.speak(message, selectedVoice.value, { rate: rate,pitch:pitch });
+                    responsiveVoice.speak(message, selectedVoice.value, { rate: rate,pitch:pitch ,volume: volume,onend: stopNoise});
                 }
             } else {
                 gen();
             }
         }
 
+
         const alphabetMap = {
-            'A': { 'STD': ['Alfa'], 'PN': ['America'], 'OTHER': ['Able'] },
-            'B': { 'STD': ['Bravo'], 'PN': ['Boston'], 'OTHER': ['Baker'] },
-            'C': { 'STD': ['Charlie'], 'PN': ['Canada'], 'OTHER': ['China'] },
-            'D': { 'STD': ['Delta'], 'PN': ['Denmark'], 'OTHER': ['David'] },
-            'E': { 'STD': ['Echo'], 'PN': ['England'], 'OTHER': ['Easy'] },
-            'F': { 'STD': ['Foxtrot'], 'PN': ['Florida'], 'OTHER': ['Francis'] },
-            'G': { 'STD': ['Golf'], 'PN': ['Germany'], 'OTHER': ['Guatemala'] },
-            'H': { 'STD': ['Hotel'], 'PN': ['Honolulu'], 'OTHER': ['Henry'] },
-            'I': { 'STD': ['India'], 'PN': ['Italy'], 'OTHER': ['Indian'] },
-            'J': { 'STD': ['Juliett'], 'PN': ['Japan'], 'OTHER': ['Juliett'] },
-            'K': { 'STD': ['Kilo'], 'PN': ['Kentucky'], 'OTHER': ['King'] },
-            'L': { 'STD': ['Lima'], 'PN': ['London'], 'OTHER': ['Lucy'] },
-            'M': { 'STD': ['Mike'], 'PN': ['Mexico'], 'OTHER': ['Mary'] },
-            'N': { 'STD': ['November'], 'PN': ['Norway'], 'OTHER': ['Nancy'] },
-            'O': { 'STD': ['Osacr'], 'PN': ['Ontaria'], 'OTHER': ['Ocean'] },
-            'P': { 'STD': ['Papa'], 'PN': ['Paraguay'], 'OTHER': ['Peter'] },
-            'Q': { 'STD': ['Quebec'], 'PN': ['Quebec'], 'OTHER': ['Queen'] },
-            'R': { 'STD': ['Romeo'], 'PN': ['Rotterdam'], 'OTHER': ['Radio'] },
-            'S': { 'STD': ['Sierra'], 'PN': ['Santiago'], 'OTHER': ['Sugar'] },
-            'T': { 'STD': ['Tango'], 'PN': ['Tokyo'], 'OTHER': ['Texas'] },
-            'U': { 'STD': ['Uniform'], 'PN': ['Uruguay'], 'OTHER': ['United'] },
-            'V': { 'STD': ['Victor'], 'PN': ['Virginia'], 'OTHER': ['Victoria'] },
-            'W': { 'STD': ['Whisky'], 'PN': ['Washington'], 'OTHER': ['Winnie'] },
-            'X': { 'STD': ['X-ray'], 'PN': ['X-ray'], 'OTHER': ['X-ray'] },
-            'Y': { 'STD': ['Yankee'], 'PN': ['Yokohama'], 'OTHER': ['Yesterday'] },
-            'Z': { 'STD': ['Zulu'], 'PN': ['Zanzibal'], 'OTHER': ['Zebra'] },
-            '1': { 'STD': ['One'], 'PN': ['One'], 'OTHER': ['One'] },
-            '2': { 'STD': ['Two'], 'PN': ['Two'], 'OTHER': ['Two'] },
-            '3': { 'STD': ['Three'], 'PN': ['Three'], 'OTHER': ['Three']},
-            '4': { 'STD': ['Four'], 'PN': ['Four'], 'OTHER': ['Four'] },
-            '5': { 'STD': ['Five'], 'PN': ['Five'], 'OTHER': ['Five'] },
-            '6': { 'STD': ['Six'], 'PN': ['Six'], 'OTHER': ['Six'] },
-            '7': { 'STD': ['Seven'], 'PN': ['Seven'], 'OTHER': ['Seven'] },
-            '8': { 'STD': ['Eight'], 'PN': ['Eight'], 'OTHER': ['Eight'] },
-            '9': { 'STD': ['Nine'], 'PN': ['Nine'], 'OTHER': ['Nine'] },
-            '0': { 'STD': ['Zero'], 'PN': ['Zero'], 'OTHER': ['Zero'] }
+            'A': { 'STD': ['Alpha'],'DSTD': ['America'], 'PN': ['America'], 'OTHER': ['Able'] },
+            'B': { 'STD': ['Bravo'],'DSTD': ['Boston'], 'PN': ['Boston'], 'OTHER': ['Baker'] },
+            'C': { 'STD': ['Charlie'],'DSTD': ['Canada'], 'PN': ['Canada'], 'OTHER': ['China'] },
+            'D': { 'STD': ['Delta'],'DSTD': ['Denmark'], 'PN': ['Denmark'], 'OTHER': ['David'] },
+            'E': { 'STD': ['Echo'],'DSTD': ['England'], 'PN': ['England'], 'OTHER': ['Easy'] },
+            'F': { 'STD': ['Foxtrot'],'DSTD': ['Florida'], 'PN': ['Florida'], 'OTHER': ['Francis'] },
+            'G': { 'STD': ['Golf'],'DSTD': ['Germany'], 'PN': ['Germany'], 'OTHER': ['Guatemala'] },
+            'H': { 'STD': ['Hotel'],'DSTD': ['Honolulu'], 'PN': ['Honolulu'], 'OTHER': ['Henry'] },
+            'I': { 'STD': ['India'],'DSTD': ['Italy'], 'PN': ['Italy'], 'OTHER': ['Indian'] },
+            'J': { 'STD': ['Juliet'],'DSTD': ['Japan'], 'PN': ['Japan'], 'OTHER': ['Juliett'] },
+            'K': { 'STD': ['Kilo'],'DSTD': ['Kilowatt'], 'PN': ['Kentucky'], 'OTHER': ['King'] },
+            'L': { 'STD': ['Lima'],'DSTD': ['London'], 'PN': ['London'], 'OTHER': ['Lucy'] },
+            'M': { 'STD': ['Mike'],'DSTD': ['Mexico'], 'PN': ['Mexico'], 'OTHER': ['Mary'] },
+            'N': { 'STD': ['November'],'DSTD': ['Norway'], 'PN': ['Norway'], 'OTHER': ['Nancy'] },
+            'O': { 'STD': ['Oscar'],'DSTD': ['Ontaria'], 'PN': ['Ontaria'], 'OTHER': ['Ocean'] },
+            'P': { 'STD': ['Papa'],'DSTD': ['Peter'], 'PN': ['Paraguay'], 'OTHER': ['Peter'] },
+            'Q': { 'STD': ['Quebec'],'DSTD': ['Queen'], 'PN': ['Quebec'], 'OTHER': ['Queen'] },
+            'R': { 'STD': ['Romeo'],'DSTD': ['Radio'], 'PN': ['Rotterdam'], 'OTHER': ['Radio'] },
+            'S': { 'STD': ['Sierra'],'DSTD': ['Sugar'], 'PN': ['Santiago'], 'OTHER': ['Sugar'] },
+            'T': { 'STD': ['Tango'],'DSTD': ['Tokyo'], 'PN': ['Tokyo'], 'OTHER': ['Texas'] },
+            'U': { 'STD': ['Uniform'],'DSTD': ['United'], 'PN': ['Uruguay'], 'OTHER': ['United'] },
+            'V': { 'STD': ['Victor'],'DSTD': ['Virginia'], 'PN': ['Virginia'], 'OTHER': ['Victoria'] },
+            'W': { 'STD': ['Whisky'],'DSTD': ['Washington'], 'PN': ['Washington'], 'OTHER': ['Winnie'] },
+            'X': { 'STD': ['X-ray'],'DSTD': ['X-ray'], 'PN': ['X-ray'], 'OTHER': ['X-ray'] },
+            'Y': { 'STD': ['Yankee'],'DSTD': ['Yokohama'], 'PN': ['Yokohama'], 'OTHER': ['Yesterday'] },
+            'Z': { 'STD': ['Zulu'],'DSTD': ['Zanzibal'], 'PN': ['Zanzibal'], 'OTHER': ['Zebra'] },
+            '1': { 'STD': ['One'],'DSTD': ['One'], 'PN': ['One'], 'OTHER': ['One'] },
+            '2': { 'STD': ['Two'],'DSTD': ['Two'], 'PN': ['Two'], 'OTHER': ['Two'] },
+            '3': { 'STD': ['Three'],'DSTD': ['Three'], 'PN': ['Three'], 'OTHER': ['Three']},
+            '4': { 'STD': ['Four'],'DSTD': ['Four'], 'PN': ['Four'], 'OTHER': ['Four'] },
+            '5': { 'STD': ['Five'],'DSTD': ['Five'], 'PN': ['Five'], 'OTHER': ['Five'] },
+            '6': { 'STD': ['Six'],'DSTD': ['Six'], 'PN': ['Six'], 'OTHER': ['Six'] },
+            '7': { 'STD': ['Seven'],'DSTD': ['Seven'], 'PN': ['Seven'], 'OTHER': ['Seven'] },
+            '8': { 'STD': ['Eight'],'DSTD': ['Eight'], 'PN': ['Eight'], 'OTHER': ['Eight'] },
+            '9': { 'STD': ['Nine'],'DSTD': ['Nine'], 'PN': ['Nine'], 'OTHER': ['Nine'] },
+            '0': { 'STD': ['Zero'],'DSTD': ['Zero'], 'PN': ['Zero'], 'OTHER': ['Zero'] }
         };
 
-        function phoneticAlphabet(input, STD = false, PN = false, OTHER = false) {
+        function phoneticAlphabet(input, STD = false,DSTD = false, PN = false, OTHER = false) {
             return input.split('').map(char => {
                 // 检查字符是否存在映射
                 if (alphabetMap[char]) {
                     let options = [];
                     if (STD) options.push('STD');
+                    if (DSTD) options.push('DSTD');
                     if (PN) options.push('PN');
                     if (OTHER) options.push('OTHER');
 
@@ -451,6 +470,74 @@
         }
 
     </script>
-    </div>
+    <script>
+        let audioContext;
+        let oscillator;
+        let gainNode;
+
+        document.getElementById('speakBtn').addEventListener('click', async () => {
+            var noiseSwitch = parseFloat(document.getElementById('noiseVolume').value) != 0;
+
+            if (noiseSwitch && !audioContext) {
+                console.log("开启背噪");
+                // 创建一个新的 AudioContext
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                // 检查 AudioContext 是否被暂停
+                if (audioContext.state === 'suspended') {
+                    await audioContext.resume();
+                }
+
+                // 创建一个 ScriptProcessorNode 并连接到输出
+                const bufferSize = 4096;
+                const scriptNode = audioContext.createScriptProcessor(bufferSize, 1, 1);
+                var noiseVolume;
+                scriptNode.onaudioprocess = function(event) {
+                    const outputBuffer = event.outputBuffer.getChannelData(0);
+
+                    for (let i = 0; i < bufferSize; i++) {
+                        // 生成随机噪音
+                        outputBuffer[i] = Math.random() * 2 - 1;
+                    }
+
+                    // 随机设置音量
+                    noiseVolume = Math.random() - (1 - parseFloat(document.getElementById('noiseVolume').value));
+                    if(noiseVolume < 0){
+                        noiseVolume = 0;
+                    }
+                    gainNode.gain.value = noiseVolume;
+                };
+
+                // 创建一个 GainNode 来控制音量
+                gainNode = audioContext.createGain();
+                scriptNode.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                // 创建一个振荡器节点，并将其连接到 ScriptProcessorNode，然后启动它
+                oscillator = audioContext.createOscillator();
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 440; // A4 音符
+                oscillator.connect(scriptNode);
+                oscillator.start();
+
+                // 启用关闭按钮
+                // document.getElementById('stopButton').disabled = false;
+            }
+        });
+
+        function stopNoise() {
+            console.log("关闭背噪");
+            if (audioContext && oscillator) {
+                oscillator.stop();
+                audioContext.close().then(() => {
+                    audioContext = null;
+                    oscillator = null;
+                    gainNode = null;
+                    // 禁用关闭按钮
+                    // document.getElementById('stopButton').disabled = true;
+                });
+            }
+        }
+    </script>
 </body>
 </html>
