@@ -371,21 +371,22 @@
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
                     utterance.onstart = function(event) {
                         console.log('本地播放开始');
-                        openNoise();
+                        onStartCallBack();
                     };
                     utterance.onend = function(event) {
                         console.log('本地播放完成');
-                        stopNoise();
+                        onEndCallBack();
                     };
                     speechSynthesis.speak(utterance);
                 } else {
                     console.log("远程播放:"+message);
                     if(responsiveVoice.isPlaying()){
                         responsiveVoice.cancel();
+                        stopNoise();
                     }
                     responsiveVoice.enableEstimationTimeout = false;
                     responsiveVoice.enableWindowClickHook();
-                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:openNoise, onend: stopNoise});
+                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:onStartCallBack, onend: onEndCallBack});
                 }
             } else {
                 gen();
@@ -492,6 +493,18 @@
             var alertBox = document.getElementById('customAlert');
             alertBox.style.display = 'none';
         }
+
+        function onStartCallBack(){
+            openNoise();
+        }
+        function onEndCallBack(){
+            if(timerInterval){
+                // 停止计时器
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            stopNoise();
+        }
     </script>
     <script>
         let audioContext;
@@ -545,14 +558,7 @@
             }
         }
 
-        // document.getElementById('speakBtn').addEventListener('click',openNoise());
-
         function stopNoise() {
-            if(timerInterval){
-                // 停止计时器
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
             if (audioContext && oscillator) {
                 console.log("关闭背噪");
                 oscillator.stop();
@@ -560,8 +566,6 @@
                     audioContext = null;
                     oscillator = null;
                     gainNode = null;
-                    // 禁用关闭按钮
-                    // document.getElementById('stopButton').disabled = true;
                 });
             }
         }
