@@ -382,6 +382,9 @@
                     speechSynthesis.speak(utterance);
                 } else {
                     console.log("远程播放:"+message);
+                    if(responsiveVoice.isPlaying()){
+                        responsiveVoice.cancel();
+                    }
                     responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:openNoise, onend: stopNoise});
                 }
             } else {
