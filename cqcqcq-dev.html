@@ -385,6 +385,7 @@
                     if(responsiveVoice.isPlaying()){
                         responsiveVoice.cancel();
                     }
+                    responsiveVoice.enableWindowClickHook();
                     responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:openNoise, onend: stopNoise});
                 }
             } else {
