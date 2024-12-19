@@ -119,7 +119,7 @@
     <h1>业余无线电呼号抄收练习</h1>
     <h2><lable id='show'>??????<lable></h2>
     <input type="text" id="textInput" style="display: none;">
-    <button onclick="speakText()">播报</button>
+    <button id='speakBtn' onclick="speakText()">播报</button>
     <input type="text" id="textInputTwo" placeholder="请输入你听到的呼号">
     <button onclick="submit()" >抄收</button>
     <button onclick="gen()" id='nextButton' style="display: none;">下一个</button>
@@ -147,12 +147,20 @@
         </select>
     </div>
     <div>
+        <label for="rate">音量：</label>
+        <input type="range" id="volume" min="0.1" max="1" step="0.1" value="1.0">
+    </div>
+    <div>
         <label for="rate">语速：</label>
         <input type="range" id="rate" min="0.1" max="1.6" step="0.1" value="1.0">
     </div>
     <div>
         <label for="rate">语调：</label>
         <input type="range" id="pitch" min="0.1" max="2.0" step="0.1" value="1.0">
+    </div>
+    <div>
+        <label for="rate">背噪：</label>
+        <input type="range" id="noiseVolume" min="0" max="1.0" step="0.01" value="0">
     </div>
     <div>
         <h3>CQCQCQ，这里是BD8FAA，祝各位通联愉快，73！<h3/>
@@ -162,7 +170,7 @@
             特别感谢友台们对本项目的宝贵建议和改进意见：
         </p>
         <p style="font-weight: bold; color: #ba8fdd;">
-            BD8AJV、BD8AVK、BD8FBI、BD8DMC、BD8DOK、BD8DFK ......
+            BD8AJV、BD8AVK、BD8FBI、BD8DMC、BD8DOK、BD8DFK、BD8AGF ......
         </p>
     </div>
 
@@ -299,6 +307,7 @@
             if (text) {
                 var mode = document.getElementById('mode').value;
                 var voice = document.getElementById('voice');
+                var volume = parseFloat(document.getElementById('volume').value);
                 var rate = parseFloat(document.getElementById('rate').value);
                 var pitch = parseFloat(document.getElementById('pitch').value);
 
@@ -341,17 +350,25 @@
                     }
                     var utterance = new SpeechSynthesisUtterance(message);
                     utterance.rate = rate;
+                    utterance.volume = volume;
                     utterance.pitch = pitch;
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
+                    utterance.onend = function(event) {
+                        console.log('本地播放完成');
+                        stopNoise();
+                    };
+
                     speechSynthesis.speak(utterance);
                 } else {
+                    alert(volume);
                     console.log("远程播放:"+message);
-                    responsiveVoice.speak(message, selectedVoice.value, { rate: rate,pitch:pitch });
+                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch, onend: stopNoise});
                 }
             } else {
                 gen();
             }
         }
+
 
         const alphabetMap = {
             'A': { 'STD': ['Alpha'],'DSTD': ['America'], 'PN': ['America'], 'OTHER': ['Able'] },
@@ -454,6 +471,74 @@
         }
 
     </script>
-    </div>
+    <script>
+        let audioContext;
+        let oscillator;
+        let gainNode;
+
+        document.getElementById('speakBtn').addEventListener('click', async () => {
+            var noiseSwitch = parseFloat(document.getElementById('noiseVolume').value) != 0;
+
+            if (noiseSwitch && !audioContext) {
+                console.log("开启背噪");
+                // 创建一个新的 AudioContext
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                // 检查 AudioContext 是否被暂停
+                if (audioContext.state === 'suspended') {
+                    await audioContext.resume();
+                }
+
+                // 创建一个 ScriptProcessorNode 并连接到输出
+                const bufferSize = 4096;
+                const scriptNode = audioContext.createScriptProcessor(bufferSize, 1, 1);
+                var noiseVolume;
+                scriptNode.onaudioprocess = function(event) {
+                    const outputBuffer = event.outputBuffer.getChannelData(0);
+
+                    for (let i = 0; i < bufferSize; i++) {
+                        // 生成随机噪音
+                        outputBuffer[i] = Math.random() * 2 - 1;
+                    }
+
+                    // 随机设置音量
+                    noiseVolume = Math.random() - (1 - parseFloat(document.getElementById('noiseVolume').value));
+                    if(noiseVolume < 0){
+                        noiseVolume = 0;
+                    }
+                    gainNode.gain.value = noiseVolume;
+                };
+
+                // 创建一个 GainNode 来控制音量
+                gainNode = audioContext.createGain();
+                scriptNode.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                // 创建一个振荡器节点，并将其连接到 ScriptProcessorNode，然后启动它
+                oscillator = audioContext.createOscillator();
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 440; // A4 音符
+                oscillator.connect(scriptNode);
+                oscillator.start();
+
+                // 启用关闭按钮
+                // document.getElementById('stopButton').disabled = false;
+            }
+        });
+
+        function stopNoise() {
+            console.log("关闭背噪");
+            if (audioContext && oscillator) {
+                oscillator.stop();
+                audioContext.close().then(() => {
+                    audioContext = null;
+                    oscillator = null;
+                    gainNode = null;
+                    // 禁用关闭按钮
+                    // document.getElementById('stopButton').disabled = true;
+                });
+            }
+        }
+    </script>
 </body>
 </html>
