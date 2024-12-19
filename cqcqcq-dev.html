@@ -360,6 +360,7 @@
 
                     speechSynthesis.speak(utterance);
                 } else {
+                    alert(volume);
                     console.log("远程播放:"+message);
                     responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch, onend: stopNoise});
                 }
