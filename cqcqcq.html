@@ -266,17 +266,20 @@
         }
 
         function submit(){
+            gtag('event','Play_Button_Click',{'time':getCurrentTime()});
             var inputValue = document.getElementById('textInputTwo').value;
             if(inputValue){
                 inputValue = inputValue.toUpperCase().trim();
                 var text = document.getElementById('textInput').value;
                 if(inputValue == text){
+                    gtag('event','Copy_Correct',{'time':getCurrentTime()});
                     showAlert("抄收正确");
                     var nextBtn = document.getElementById('nextButton');
                     nextBtn.style.display='';
                     var showLabel = document.getElementById('show');
                     showLabel.textContent=text;
                 } else {
+                    gtag('event','Copy_Mistake',{'time':getCurrentTime()});
                     showAlert("抄收错误，你可以重新播放");
                 }
             } else {
@@ -285,6 +288,7 @@
         }
 
         function gen() {
+            gtag('event','Next_Button_Click',{'time':getCurrentTime()});
             var text = generateRandomString();
             var textInput = document.getElementById('textInput');
             textInput.value = text;
@@ -300,6 +304,7 @@
         var timerInterval;
 
         function speakText() {
+            gtag('event','Play_Button_Click',{'time':getCurrentTime()});
             var message1 = "CQ CQ CQ，这里是";
             var message2 = "，呼叫频率上的友台，Over!";
             var message3 = "CQ CQ CQ，This Is ";
@@ -370,10 +375,12 @@
                     utterance.pitch = pitch;
                     utterance.voice = voices[selectedVoice.getAttribute("data-index")];
                     utterance.onstart = function(event) {
+                        gtag('event','Local_Play_Start',{'time':getCurrentTime()});
                         console.log('本地播放开始');
                         onStartCallBack();
                     };
                     utterance.onend = function(event) {
+                        gtag('event','Local_Play_Finish',{'time':getCurrentTime()});
                         console.log('本地播放完成');
                         onEndCallBack();
                     };
@@ -386,7 +393,7 @@
                     }
                     responsiveVoice.enableEstimationTimeout = false;
                     responsiveVoice.enableWindowClickHook();
-                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:onStartCallBack, onend: onEndCallBack});
+                    responsiveVoice.speak(message, selectedVoice.value, {volume: volume, rate: rate,pitch:pitch,onstart:onRemotePlayStartCallBack, onend: onRemotePlayEndCallBack});
                 }
             } else {
                 gen();
@@ -505,6 +512,17 @@
             }
             stopNoise();
         }
+
+        function onRemotePlayStartCallBack(){
+            console.log('远程播放开始');
+            gtag('event','Remote_Play_Start',{'time':getCurrentTime()});
+            onStartCallBack();
+        }
+        function onRemotePlayEndCallBack(){
+            console.log('远程播放结束');
+            gtag('event','Remote_Play_Finish',{'time':getCurrentTime()});
+            onEndCallBack();
+        }
     </script>
     <script>
         let audioContext;
@@ -568,6 +586,20 @@
                     gainNode = null;
                 });
             }
+        }
+
+        function getCurrentTime() {
+            const now = new Date();
+
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
         }
     </script>
 </body>
