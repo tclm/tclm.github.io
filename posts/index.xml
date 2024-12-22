@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>所有文章 - 余思所赋</title>
-        <link>http://localhost:1313/posts/</link>
+        <link>https://bd8faa.com/posts/</link>
         <description>所有文章 | 余思所赋</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Apr 2022 21:59:21 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Apr 2022 21:59:21 &#43;0800</lastBuildDate><atom:link href="https://bd8faa.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Storm开箱</title>
-    <link>http://localhost:1313/posts/storm/</link>
+    <link>https://bd8faa.com/posts/storm/</link>
     <pubDate>Sat, 10 Nov 2018 16:35:43 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://localhost:1313/posts/storm/</guid>
+    <guid>https://bd8faa.com/posts/storm/</guid>
     <description><![CDATA[<h3 id="1什么是-storm">1.什么是 Storm?</h3>
 <p>Storm 是一个<strong>分布式</strong>的，<strong>可靠</strong>的，<strong>容错</strong>的<strong>数据流处理</strong>系统。</p>
 <p></p>
