@@ -120,10 +120,10 @@
     <h2><lable id='show'>??????<lable></h2>
     <input type="text" id="textInput" style="display: none;">
     <div id="timer" style="font-size: 12px; color: #bd8faa; text-align: right; margin-top: 0px;">0.0</div>
-    <button id='speakBtn' onclick="speakText()">播报</button>
+    <button id='speakBtn' onclick="speakBtnClick()">播报</button>
     <input type="text" id="textInputTwo" placeholder="请输入你听到的呼号">
-    <button onclick="submit()" >抄收</button>
-    <button onclick="gen()" id='nextButton' style="display: none;">下一个</button>
+    <button onclick="copyBtnClick()" >抄收</button>
+    <button onclick="nextBtnClick()" id='nextButton' style="display: none;">下一个</button>
 
     <div>
         <label for="rate">播报模式：</label>
@@ -265,8 +265,8 @@
             }
         }
 
-        function submit(){
-            gtag('event','Play_Button_Click',{'time':getCurrentTime()});
+        function copyBtnClick(){
+            gtag('event','Copy_Button_Click',{'time':getCurrentTime()});
             var inputValue = document.getElementById('textInputTwo').value;
             if(inputValue){
                 inputValue = inputValue.toUpperCase().trim();
@@ -287,8 +287,12 @@
             }
         }
 
-        function gen() {
+        function nextBtnClick(){
             gtag('event','Next_Button_Click',{'time':getCurrentTime()});
+            gen();
+        }
+
+        function gen() {
             var text = generateRandomString();
             var textInput = document.getElementById('textInput');
             textInput.value = text;
@@ -303,8 +307,12 @@
 
         var timerInterval;
 
-        function speakText() {
+        function speakBtnClick() {
             gtag('event','Play_Button_Click',{'time':getCurrentTime()});
+            speakText();
+        }
+
+        function speakText() {
             var message1 = "CQ CQ CQ，这里是";
             var message2 = "，呼叫频率上的友台，Over!";
             var message3 = "CQ CQ CQ，This Is ";
