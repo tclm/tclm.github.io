@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Storm开箱 - 余思所赋</title><meta name="Description" content=""><meta property="og:title" content="Storm开箱" />
-<meta property="og:description" content="1.什么是 Storm? Storm 是一个分布式的，可靠的，容错的数据流处理系统。 Storm 应用是由 Spout （上图水龙头） 和 Bolt （上图水滴） 构建成的Topology在Storm环" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://tclm.github.io/posts/storm/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-11-10T16:35:43+08:00" />
-<meta property="article:modified_time" content="2018-11-10T16:35:43+08:00" />
+        <title>Storm开箱 - 余思所赋</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="http://localhost:1313/posts/storm/">
+  <meta property="og:site_name" content="余思所赋">
+  <meta property="og:title" content="Storm开箱">
+  <meta property="og:description" content="1.什么是 Storm? Storm 是一个分布式的，可靠的，容错的数据流处理系统。
+Storm 应用是由 Spout （上图水龙头） 和 Bolt （上图水滴） 构建成的Topology在Storm环境中运行,其中 Spout 负责接收或获取源数据并发送给 Bolt 进行业务处理， Bolt 处理完数据后，发送给下个 Bolt 或结束任务。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-11-10T16:35:43+08:00">
+    <meta property="article:modified_time" content="2018-11-10T16:35:43+08:00">
+    <meta property="article:tag" content="开箱">
+    <meta property="article:tag" content="技术">
 
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Storm开箱"/>
-<meta name="twitter:description" content="1.什么是 Storm? Storm 是一个分布式的，可靠的，容错的数据流处理系统。 Storm 应用是由 Spout （上图水龙头） 和 Bolt （上图水滴） 构建成的Topology在Storm环"/>
-<meta name="application-name" content="余思所赋">
-<meta name="apple-mobile-web-app-title" content="余思所赋"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Storm开箱">
+  <meta name="twitter:description" content="1.什么是 Storm? Storm 是一个分布式的，可靠的，容错的数据流处理系统。
+Storm 应用是由 Spout （上图水龙头） 和 Bolt （上图水滴） 构建成的Topology在Storm环境中运行,其中 Spout 负责接收或获取源数据并发送给 Bolt 进行业务处理， Bolt 处理完数据后，发送给下个 Bolt 或结束任务。">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://tclm.github.io/posts/storm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/storm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,63 +34,55 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/tclm.github.io\/posts\/storm\/"
+            "@id": "http:\/\/localhost:1313\/posts\/storm\/"
         },"genre": "posts","keywords": "开箱, 技术","wordcount":  8912 ,
-        "url": "https:\/\/tclm.github.io\/posts\/storm\/","datePublished": "2018-11-10T16:35:43+08:00","dateModified": "2018-11-10T16:35:43+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/posts\/storm\/","datePublished": "2018-11-10T16:35:43+08:00","dateModified": "2018-11-10T16:35:43+08:00","publisher": {
             "@type": "Organization",
-            "name": "余赋"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
-                "name": "余赋"
+                "name": "作者"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="余思所赋">余思所赋</a>
+            <a href="/" title="余思所赋">My cool site</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/"> 首页 </a><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                    <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="余思所赋">余思所赋</a>
+                <a href="/" title="余思所赋">My cool site</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
             </div>
         </div>
         <div class="menu" id="menu-mobile"><a class="menu-item" href="/" title="">首页</a><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                <i class="fas fa-adjust fa-fw"></i>
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Storm开箱</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/tclm" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>余赋</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%BC%80%E7%AE%B1%E7%B3%BB%E5%88%97/"><i class="far fa-folder fa-fw"></i>开箱系列</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-11-10">2018-11-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8912 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 18 分钟&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Storm开箱</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>作者</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%BC%80%E7%AE%B1%E7%B3%BB%E5%88%97/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>开箱系列</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2018-11-10">2018-11-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 8912 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 18 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -275,81 +274,81 @@
 </span><span class="lnt">74
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">spouts</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.spout.SpoutOutputCollector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.TopologyContext</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.base.BaseRichSpout</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Fields</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Values</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.utils.Utils</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">spouts</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.spout.SpoutOutputCollector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.task.TopologyContext</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.base.BaseRichSpout</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Fields</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Values</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.utils.Utils</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 向后端发射tuple数据流
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author soul
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SentenceSpout</span> <span class="kd">extends</span> <span class="n">BaseRichSpout</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//BaseRichSpout是ISpout接口和IComponent接口的简单实现，接口对用不到的方法提供了默认的实现
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SentenceSpout</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseRichSpout</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//BaseRichSpout是ISpout接口和IComponent接口的简单实现，接口对用不到的方法提供了默认的实现</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">	 * 
-</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
-</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">6768845742899211592L</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="n">SpoutOutputCollector</span> <span class="n">collector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">sentences</span> <span class="o">=</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="s">&#34;my name is soul&#34;</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">            <span class="s">&#34;im a boy&#34;</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">            <span class="s">&#34;i have a dog&#34;</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">            <span class="s">&#34;my dog has fleas&#34;</span><span class="o">,</span>
-</span></span><span class="line"><span class="cl">            <span class="s">&#34;my girl friend is beautiful&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">index</span><span class="o">=</span><span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">6768845742899211592L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="n">SpoutOutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">sentences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;my name is soul&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;im a boy&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;i have a dog&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;my dog has fleas&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;my girl friend is beautiful&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * open()方法中是ISpout接口中定义，在Spout组件初始化时被调用。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * open()接受三个参数:一个包含Storm配置的Map,一个TopologyContext对象，提供了topology中组件的信息,SpoutOutputCollector对象提供发射tuple的方法。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 在这个例子中,我们不需要执行初始化,只是简单的存储在一个SpoutOutputCollector实例变量。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">open</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">SpoutOutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">collector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="n">Map</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">TopologyContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">SpoutOutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">collector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * nextTuple()方法是任何Spout实现的核心。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * Storm调用这个方法，向输出的collector发出tuple。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 在这里,我们只是发出当前索引的句子，并增加该索引准备发射下一个句子。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">sentences</span><span class="o">[</span><span class="n">index</span><span class="o">]));</span>
-</span></span><span class="line"><span class="cl">        <span class="n">index</span><span class="o">++;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">index</span><span class="o">&gt;=</span><span class="n">sentences</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">index</span><span class="o">=</span><span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Utils</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">nextTuple</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">collector</span><span class="p">.</span><span class="na">emit</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Values</span><span class="p">(</span><span class="n">sentences</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">index</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="o">&gt;=</span><span class="n">sentences</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">index</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Utils</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * declareOutputFields是在IComponent接口中定义的，所有Storm的组件（spout和bolt）都必须实现这个接口
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 用于告诉Storm流组件将会发出那些数据流，每个流的tuple将包含的字段
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&#34;sentence&#34;</span><span class="o">));</span><span class="c1">//告诉组件发出数据流包含sentence字段
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">declareOutputFields</span><span class="p">(</span><span class="n">OutputFieldsDeclarer</span><span class="w"> </span><span class="n">declarer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">declarer</span><span class="p">.</span><span class="na">declare</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Fields</span><span class="p">(</span><span class="s">&#34;sentence&#34;</span><span class="p">));</span><span class="c1">//告诉组件发出数据流包含sentence字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="24-编写-splitsentenceboltjava">2.4 编写 SplitSentenceBolt.java</h4>
 <div class="highlight"><div class="chroma">
@@ -413,64 +412,64 @@
 </span><span class="lnt">57
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.OutputCollector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.TopologyContext</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.base.BaseRichBolt</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Fields</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Tuple</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Values</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">bolts</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.task.OutputCollector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.task.TopologyContext</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.base.BaseRichBolt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Fields</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Tuple</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Values</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 订阅sentence spout发射的tuple流，实现分割单词
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SplitSentenceBolt</span> <span class="kd">extends</span> <span class="n">BaseRichBolt</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//BaseRichBolt是IComponent和IBolt接口的实现
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//继承这个类，就不用去实现本例不关心的方法
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SplitSentenceBolt</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseRichBolt</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//BaseRichBolt是IComponent和IBolt接口的实现</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//继承这个类，就不用去实现本例不关心的方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * prepare()方法类似于ISpout 的open()方法。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 这个方法在blot初始化时调用，可以用来准备bolt用到的资源,比如数据库连接。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 本例子和SentenceSpout类一样,SplitSentenceBolt类不需要太多额外的初始化,
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 所以prepare()方法只保存OutputCollector对象的引用。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">this</span><span class="o">.</span><span class="na">collector</span><span class="o">=</span><span class="n">collector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prepare</span><span class="p">(</span><span class="n">Map</span><span class="w"> </span><span class="n">stormConf</span><span class="p">,</span><span class="w"> </span><span class="n">TopologyContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">OutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">collector</span><span class="o">=</span><span class="n">collector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * SplitSentenceBolt核心功能是在类IBolt定义execute()方法，这个方法是IBolt接口中定义。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 每次Bolt从流接收一个订阅的tuple，都会调用这个方法。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 本例中,收到的元组中查找“sentence”的值,
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 并将该值拆分成单个的词,然后按单词发出新的tuple。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">sentence</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">getStringByField</span><span class="o">(</span><span class="s">&#34;sentence&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">word</span> <span class="o">:</span> <span class="n">words</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="k">this</span><span class="o">.</span><span class="na">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">word</span><span class="o">));</span><span class="c1">//向下一个bolt发射数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">}</span>       
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">Tuple</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sentence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getStringByField</span><span class="p">(</span><span class="s">&#34;sentence&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sentence</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&#34; &#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">words</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">collector</span><span class="p">.</span><span class="na">emit</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Values</span><span class="p">(</span><span class="n">word</span><span class="p">));</span><span class="c1">//向下一个bolt发射数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">       
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * plitSentenceBolt类定义一个元组流,每个包含一个字段(“word”)。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&#34;word&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">declareOutputFields</span><span class="p">(</span><span class="n">OutputFieldsDeclarer</span><span class="w"> </span><span class="n">declarer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">declarer</span><span class="p">.</span><span class="na">declare</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Fields</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="25-编写-wordcountboltjava">2.5 编写 WordCountBolt.java</h4>
 <div class="highlight"><div class="chroma">
@@ -544,30 +543,30 @@
 </span><span class="lnt">67
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.OutputCollector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.TopologyContext</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.base.BaseRichBolt</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Fields</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Tuple</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Values</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">bolts</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.task.OutputCollector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.task.TopologyContext</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.base.BaseRichBolt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Fields</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Tuple</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Values</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 订阅 split sentence bolt的输出流，实现单词计数，并发送当前计数给下一个bolt
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author soul
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WordCountBolt</span> <span class="kd">extends</span> <span class="n">BaseRichBolt</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//存储单词和对应的计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">counts</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span><span class="c1">//注：不可序列化对象需在prepare中实例化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">WordCountBolt</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseRichBolt</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">OutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//存储单词和对应的计数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="c1">//注：不可序列化对象需在prepare中实例化</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 大部分实例变量通常是在prepare()中进行实例化，这个设计模式是由topology的部署方式决定的
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 因为在部署拓扑时,组件spout和bolt是在网络上发送的序列化的实例变量。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 如果spout或bolt有任何non-serializable实例变量在序列化之前被实例化(例如,在构造函数中创建)
@@ -575,43 +574,43 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 本例中因为HashMap 是可序列化的,所以可以安全地在构造函数中实例化。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 但是，通常情况下最好是在构造函数中对基本数据类型和可序列化的对象进行复制和实例化
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 而在prepare()方法中对不可序列化的对象进行实例化。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">this</span><span class="o">.</span><span class="na">collector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">counts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prepare</span><span class="p">(</span><span class="n">Map</span><span class="w"> </span><span class="n">stormConf</span><span class="p">,</span><span class="w"> </span><span class="n">TopologyContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">OutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">collector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 在execute()方法中,我们查找的收到的单词的计数(如果不存在，初始化为0)
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 然后增加计数并存储,发出一个新的词和当前计数组成的二元组。
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 发射计数作为流允许拓扑的其他bolt订阅和执行额外的处理。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">word</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">getStringByField</span><span class="o">(</span><span class="s">&#34;word&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Long</span> <span class="n">count</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">counts</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">word</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">count</span> <span class="o">=</span> <span class="n">0L</span><span class="o">;</span><span class="c1">//如果不存在，初始化为0
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">count</span><span class="o">++;</span><span class="c1">//增加计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">this</span><span class="o">.</span><span class="na">counts</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">);</span><span class="c1">//存储计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">this</span><span class="o">.</span><span class="na">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">word</span><span class="o">,</span><span class="n">count</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">Tuple</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getStringByField</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Long</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">word</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0L</span><span class="p">;</span><span class="c1">//如果不存在，初始化为0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="c1">//增加计数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="c1">//存储计数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">collector</span><span class="p">.</span><span class="na">emit</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Values</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="n">count</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//声明一个输出流，其中tuple包括了单词和对应的计数，向后发射
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//其他bolt可以订阅这个数据流进一步处理
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&#34;word&#34;</span><span class="o">,</span><span class="s">&#34;count&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">declareOutputFields</span><span class="p">(</span><span class="n">OutputFieldsDeclarer</span><span class="w"> </span><span class="n">declarer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//声明一个输出流，其中tuple包括了单词和对应的计数，向后发射</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//其他bolt可以订阅这个数据流进一步处理</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">declarer</span><span class="p">.</span><span class="na">declare</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Fields</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">,</span><span class="s">&#34;count&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="26-编写-reportboltjava">2.6 编写 ReportBolt.java</h4>
 <div class="highlight"><div class="chroma">
@@ -681,70 +680,70 @@
 </span><span class="lnt">63
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">bolts</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.OutputCollector</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.task.TopologyContext</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.base.BaseRichBolt</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Tuple</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">bolts</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collections</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.task.OutputCollector</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.task.TopologyContext</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.OutputFieldsDeclarer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.base.BaseRichBolt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Tuple</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 生成一份报告
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * @author soul
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReportBolt</span> <span class="kd">extends</span> <span class="n">BaseRichBolt</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">counts</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span><span class="c1">//保存单词和对应的计数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">counts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">word</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">getStringByField</span><span class="o">(</span><span class="s">&#34;word&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Long</span> <span class="n">count</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">getLongByField</span><span class="o">(</span><span class="s">&#34;count&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">counts</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">//实时输出
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;结果:&#34;</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">counts</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// TODO Auto-generated method stub
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//这里是末端bolt，不需要发射数据流，这里无需定义
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ReportBolt</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseRichBolt</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="c1">//保存单词和对应的计数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prepare</span><span class="p">(</span><span class="n">Map</span><span class="w"> </span><span class="n">stormConf</span><span class="p">,</span><span class="w"> </span><span class="n">TopologyContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">OutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">Tuple</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getStringByField</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Long</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">getLongByField</span><span class="p">(</span><span class="s">&#34;count&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//实时输出</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;结果:&#34;</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">declareOutputFields</span><span class="p">(</span><span class="n">OutputFieldsDeclarer</span><span class="w"> </span><span class="n">declarer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// TODO Auto-generated method stub</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//这里是末端bolt，不需要发射数据流，这里无需定义</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * cleanup是IBolt接口中定义
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * Storm在终止一个bolt之前会调用这个方法
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 本例我们利用cleanup()方法在topology关闭时输出最终的计数结果
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 通常情况下，cleanup()方法用来释放bolt占用的资源，如打开的文件句柄或数据库连接
 </span></span></span><span class="line"><span class="cl"><span class="cm">     * 但是当Storm拓扑在一个集群上运行，IBolt.cleanup()方法不能保证执行（这里是开发模式，生产环境不要这样做）。
-</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanup</span><span class="o">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;---------- FINAL COUNTS -----------&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">keys</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">keys</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">counts</span><span class="o">.</span><span class="na">keySet</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">keys</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span> <span class="o">:</span> <span class="n">keys</span><span class="o">){</span>
-</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">&#34; : &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">counts</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;----------------------------&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">cleanup</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;---------- FINAL COUNTS -----------&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">keys</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="p">.</span><span class="na">keySet</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">keys</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">keys</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34; : &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">counts</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;----------------------------&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="27-编写-appjava">2.7 编写 App.java</h4>
 <div class="highlight"><div class="chroma">
@@ -831,87 +830,87 @@
 </span><span class="lnt">80
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.Config</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.LocalCluster</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.topology.TopologyBuilder</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.tuple.Fields</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.apache.storm.utils.Utils</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">bolts.ReportBolt</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">bolts.SplitSentenceBolt</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">bolts.WordCountBolt</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">spouts.SentenceSpout</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.Config</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.LocalCluster</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.topology.TopologyBuilder</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.tuple.Fields</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.storm.utils.Utils</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">bolts.ReportBolt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">bolts.SplitSentenceBolt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">bolts.WordCountBolt</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">spouts.SentenceSpout</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 实现单词计数topology
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> 
-</span></span><span class="line"><span class="cl"><span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">SENTENCE_SPOUT_ID</span> <span class="o">=</span> <span class="s">&#34;sentence-spout&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">SPLIT_BOLT_ID</span> <span class="o">=</span> <span class="s">&#34;split-bolt&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">COUNT_BOLT_ID</span> <span class="o">=</span> <span class="s">&#34;count-bolt&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">REPORT_BOLT_ID</span> <span class="o">=</span> <span class="s">&#34;report-bolt&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TOPOLOGY_NAME</span> <span class="o">=</span> <span class="s">&#34;word-count-topology&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span><span class="o">[]</span> <span class="n">args</span> <span class="o">)</span> <span class="c1">//throws Exception
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//System.out.println( &#34;Hello World!&#34; );
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//实例化spout和bolt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="n">SentenceSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SentenceSpout</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">SplitSentenceBolt</span> <span class="n">splitBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSentenceBolt</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">WordCountBolt</span> <span class="n">countBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WordCountBolt</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">ReportBolt</span> <span class="n">reportBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ReportBolt</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TopologyBuilder</span><span class="o">();</span><span class="c1">//创建了一个TopologyBuilder实例
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//TopologyBuilder提供流式风格的API来定义topology组件之间的数据流
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//builder.setSpout(SENTENCE_SPOUT_ID, spout);//注册一个sentence spout
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//设置两个Executeor(线程)，默认一个
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="n">SENTENCE_SPOUT_ID</span><span class="o">,</span> <span class="n">spout</span><span class="o">,</span><span class="n">2</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">// SentenceSpout --&gt; SplitSentenceBolt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//注册一个bolt并订阅sentence发射出的数据流，shuffleGrouping方法告诉Storm要将SentenceSpout发射的tuple随机均匀的分发给SplitSentenceBolt的实例
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//builder.setBolt(SPLIT_BOLT_ID, splitBolt).shuffleGrouping(SENTENCE_SPOUT_ID);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//SplitSentenceBolt单词分割器设置4个Task，2个Executeor(线程)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="n">SPLIT_BOLT_ID</span><span class="o">,</span> <span class="n">splitBolt</span><span class="o">,</span><span class="n">2</span><span class="o">).</span><span class="na">setNumTasks</span><span class="o">(</span><span class="n">4</span><span class="o">).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="n">SENTENCE_SPOUT_ID</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// SplitSentenceBolt --&gt; WordCountBolt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//fieldsGrouping将含有特定数据的tuple路由到特殊的bolt实例中
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//这里fieldsGrouping()方法保证所有“word”字段相同的tuuple会被路由到同一个WordCountBolt实例中
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//builder.setBolt(COUNT_BOLT_ID, countBolt).fieldsGrouping( SPLIT_BOLT_ID, new Fields(&#34;word&#34;));
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//WordCountBolt单词计数器设置4个Executeor(线程)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="n">COUNT_BOLT_ID</span><span class="o">,</span> <span class="n">countBolt</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">fieldsGrouping</span><span class="o">(</span> <span class="n">SPLIT_BOLT_ID</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&#34;word&#34;</span><span class="o">));</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// WordCountBolt --&gt; ReportBolt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">        <span class="c1">//globalGrouping是把WordCountBolt发射的所有tuple路由到唯一的ReportBolt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="n">REPORT_BOLT_ID</span><span class="o">,</span> <span class="n">reportBolt</span><span class="o">).</span><span class="na">globalGrouping</span><span class="o">(</span><span class="n">COUNT_BOLT_ID</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span><span class="c1">//Config类是一个HashMap&lt;String,Object&gt;的子类，用来配置topology运行时的行为
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//设置worker数量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//config.setNumWorkers(2);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">LocalCluster</span> <span class="n">cluster</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalCluster</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">//本地提交
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">cluster</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">TOPOLOGY_NAME</span><span class="o">,</span> <span class="n">config</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createTopology</span><span class="o">());</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">Utils</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">10000</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cluster</span><span class="o">.</span><span class="na">killTopology</span><span class="o">(</span><span class="n">TOPOLOGY_NAME</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Utils</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cluster</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">App</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SENTENCE_SPOUT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;sentence-spout&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SPLIT_BOLT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;split-bolt&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">COUNT_BOLT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;count-bolt&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">REPORT_BOLT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;report-bolt&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">TOPOLOGY_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;word-count-topology&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="c1">//throws Exception</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//System.out.println( &#34;Hello World!&#34; );</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//实例化spout和bolt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">SentenceSpout</span><span class="w"> </span><span class="n">spout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SentenceSpout</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">SplitSentenceBolt</span><span class="w"> </span><span class="n">splitBolt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SplitSentenceBolt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">WordCountBolt</span><span class="w"> </span><span class="n">countBolt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WordCountBolt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ReportBolt</span><span class="w"> </span><span class="n">reportBolt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReportBolt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">TopologyBuilder</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TopologyBuilder</span><span class="p">();</span><span class="c1">//创建了一个TopologyBuilder实例</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//TopologyBuilder提供流式风格的API来定义topology组件之间的数据流</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//builder.setSpout(SENTENCE_SPOUT_ID, spout);//注册一个sentence spout</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//设置两个Executeor(线程)，默认一个</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">builder</span><span class="p">.</span><span class="na">setSpout</span><span class="p">(</span><span class="n">SENTENCE_SPOUT_ID</span><span class="p">,</span><span class="w"> </span><span class="n">spout</span><span class="p">,</span><span class="n">2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// SentenceSpout --&gt; SplitSentenceBolt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//注册一个bolt并订阅sentence发射出的数据流，shuffleGrouping方法告诉Storm要将SentenceSpout发射的tuple随机均匀的分发给SplitSentenceBolt的实例</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//builder.setBolt(SPLIT_BOLT_ID, splitBolt).shuffleGrouping(SENTENCE_SPOUT_ID);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//SplitSentenceBolt单词分割器设置4个Task，2个Executeor(线程)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">builder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="n">SPLIT_BOLT_ID</span><span class="p">,</span><span class="w"> </span><span class="n">splitBolt</span><span class="p">,</span><span class="n">2</span><span class="p">).</span><span class="na">setNumTasks</span><span class="p">(</span><span class="n">4</span><span class="p">).</span><span class="na">shuffleGrouping</span><span class="p">(</span><span class="n">SENTENCE_SPOUT_ID</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// SplitSentenceBolt --&gt; WordCountBolt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//fieldsGrouping将含有特定数据的tuple路由到特殊的bolt实例中</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//这里fieldsGrouping()方法保证所有“word”字段相同的tuuple会被路由到同一个WordCountBolt实例中</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//builder.setBolt(COUNT_BOLT_ID, countBolt).fieldsGrouping( SPLIT_BOLT_ID, new Fields(&#34;word&#34;));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//WordCountBolt单词计数器设置4个Executeor(线程)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">builder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="n">COUNT_BOLT_ID</span><span class="p">,</span><span class="w"> </span><span class="n">countBolt</span><span class="p">,</span><span class="n">4</span><span class="p">).</span><span class="na">fieldsGrouping</span><span class="p">(</span><span class="w"> </span><span class="n">SPLIT_BOLT_ID</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Fields</span><span class="p">(</span><span class="s">&#34;word&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// WordCountBolt --&gt; ReportBolt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//globalGrouping是把WordCountBolt发射的所有tuple路由到唯一的ReportBolt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">builder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="n">REPORT_BOLT_ID</span><span class="p">,</span><span class="w"> </span><span class="n">reportBolt</span><span class="p">).</span><span class="na">globalGrouping</span><span class="p">(</span><span class="n">COUNT_BOLT_ID</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Config</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Config</span><span class="p">();</span><span class="c1">//Config类是一个HashMap&lt;String,Object&gt;的子类，用来配置topology运行时的行为</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//设置worker数量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//config.setNumWorkers(2);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">LocalCluster</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LocalCluster</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//本地提交</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cluster</span><span class="p">.</span><span class="na">submitTopology</span><span class="p">(</span><span class="n">TOPOLOGY_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">createTopology</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Utils</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">10000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cluster</span><span class="p">.</span><span class="na">killTopology</span><span class="p">(</span><span class="n">TOPOLOGY_NAME</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Utils</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">1000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cluster</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="3-常用api">3. 常用API</h3>
@@ -947,23 +946,23 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">* open()接受三个参数:一个包含Storm配置的Map;
 </span></span></span><span class="line"><span class="cl"><span class="cm">*                    一个TopologyContext对象;
 </span></span></span><span class="line"><span class="cl"><span class="cm">*                    提供了topology中组件的信息,SpoutOutputCollector对象提供发射tuple的方法。
-</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
-</span></span><span class="line"><span class="cl">                     
-</span></span><span class="line"><span class="cl"><span class="n">open</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">SpoutOutputCollector</span> <span class="n">collector</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                     
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">open</span><span class="p">(</span><span class="n">Map</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">TopologyContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">SpoutOutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * nextTuple()方法是任何Spout实现的核心。
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * Storm调用这个方法，向输出的collector发出tuple。
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 在这里,我们只是发出当前索引的句子，并增加该索引准备发射下一个句子。
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">nextTuple</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">nextTuple</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * declareOutputFields是在IComponent接口中定义的，所有Storm的组件（spout和bolt）都必须实现这个接口
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 用于告诉Storm流组件将会发出那些数据流，每个流的tuple将包含的字段
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">declareOutputFields</span><span class="p">(</span><span class="n">OutputFieldsDeclarer</span><span class="w"> </span><span class="n">declarer</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="32-bolt">3.2 Bolt</h4>
 <p>通常情况下，继承 org.apache.storm.topology.base.BaseRichBolt 重写以下三个方法即可实现一个 Bolt。</p>
@@ -989,25 +988,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * prepare()方法类似于ISpout 的open()方法。
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 这个方法在blot初始化时调用，可以用来准备bolt用到的资源,比如数据库连接。
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">prepare</span><span class="p">(</span><span class="n">Map</span><span class="w"> </span><span class="n">stormConf</span><span class="p">,</span><span class="w"> </span><span class="n">TopologyContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">OutputCollector</span><span class="w"> </span><span class="n">collector</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 每一个Bolt核心功能是在接口IBolt定义的execute()方法
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 每次Bolt从流接收一个订阅的tuple，都会调用这个方法
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">input</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">execute</span><span class="p">(</span><span class="n">Tuple</span><span class="w"> </span><span class="n">input</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * declareOutputFields是在IComponent接口中定义的，所有Storm的组件（spout和bolt）都必须实现这个接口
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 用于告诉Storm流组件将会发出那些数据流，每个流的tuple将包含的字段
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">declareOutputFields</span><span class="p">(</span><span class="n">OutputFieldsDeclarer</span><span class="w"> </span><span class="n">declarer</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="33-topologybuilder">3.3 TopologyBuilder</h4>
 <p>TopologyBuilder 用于创建一个 Topology（拓扑结构），Topology 实际就是 spout 和 bolt之间的关系定义.</p>
@@ -1038,22 +1037,22 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 在Topology定义一个新的Spout
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *  id 用来在需要消费其产生的Tuple的Bolt订阅使用
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * parallelism_hint 定义executor的数量
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">SpoutDeclarer</span> <span class="nf">setSpout</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IRichSpout</span> <span class="n">spout</span><span class="o">,</span> <span class="n">Number</span> <span class="n">parallelism_hint</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">SpoutDeclarer</span><span class="w"> </span><span class="nf">setSpout</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">IRichSpout</span><span class="w"> </span><span class="n">spout</span><span class="p">,</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="n">parallelism_hint</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 在Topology定义一个新的Bolt
 </span></span></span><span class="line"><span class="cl"><span class="cm"> *  id 用来在需要消费其产生的Tuple的Bolt订阅使用
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * parallelism_hint 定义executor的数量
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">BoltDeclarer</span> <span class="nf">setBolt</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IRichBolt</span> <span class="n">bolt</span><span class="o">,</span> <span class="n">Number</span> <span class="n">parallelism_hint</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">BoltDeclarer</span><span class="w"> </span><span class="nf">setBolt</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">IRichBolt</span><span class="w"> </span><span class="n">bolt</span><span class="p">,</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="n">parallelism_hint</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 所有的xxxGrouping 都是用来订阅Tuple的消息
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * 不同的 Grouping 执行方式不同，Storm默认提供七种不同的流分组策略，具体差异见 5. 流分组策略
-</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
-</span></span><span class="line"><span class="cl"><span class="n">BoltDeclarer</span><span class="o">.</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="n">String</span> <span class="n">componentId</span><span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">BoltDeclarer</span><span class="p">.</span><span class="na">shuffleGrouping</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">componentId</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="4-基本概念">4. 基本概念</h3>
@@ -1119,30 +1118,30 @@ Storm 集群中，可以通过设置拓扑中每个 Spout 或 Bolt 的任务数�
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="c1">// 1.随机分组、轮询、平均分配,随机派发stream里面的tuple，保证每个bolt task接收到的tuple数目大致相同。
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS1&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 2.按字段分组，比如，按&#34;user-id&#34;这个字段来分组，那么具有同样&#34;user-id&#34;的 tuple 会被分到相同的Bolt里的一个task。
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS2&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">2</span><span class="o">).</span><span class="na">fieldsGrouping</span><span class="o">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">,</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&#34;number&#34;</span><span class="o">)).</span><span class="na">setNumTasks</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 3.广播发送，对于每一个tuple，所有的bolts都会收到
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS3&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">1</span><span class="o">).</span><span class="na">allGrouping</span><span class="o">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 4.Stream中的所有的tuple都会发送给同一个bolt任务处理，所有的tuple将会发送给拥有最小task_id的bolt任务处理
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS4&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">globalGrouping</span><span class="o">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 5.不分组，这个分组的意思是说stream不关心到底怎样分组。目前这种分组和Shuffle grouping是一样的效果。 有一点不同的是storm会把使用none grouping的这个bolt放到这个bolt的订阅者同一个线程里面去执行（未来Storm如果可能的话会这样设计）。  
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS5&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">noneGrouping</span><span class="o">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 6.指向型分组， 这是一种比较特别的分组方法，用这种分组意味着消息（tuple）的发送者指定由消息接收者的哪个task处理这个消息。只有被声明为 Direct Stream 的消息流可以声明这种分组方法。而且这种消息tuple必须使用 emitDirect 方法来发射。消息处理者可以通过 TopologyContext 来获取处理它的消息的task的id (OutputCollector.emit方法也会返回task的id)   
-</span></span></span><span class="line"><span class="cl"><span class="c1">//topologyBuilder.setBolt(&#34;MYBOLTS6&#34;, myBolts,4).directGrouping(&#34;MYSPOUT&#34;);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 7.本地或随机分组。如果目标bolt有一个或者多个task与源bolt的task在同一个工作进程中，tuple将会被随机发送给这些同进程中的tasks。否则，和普通的Shuffle Grouping行为一致 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS7&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">localOrShuffleGrouping</span><span class="o">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 8.这种方式与按字段分组很相似，根据定义的域来对数据流进行分组，不同的是，这种方式会考虑下游 Bolt 数据处理的均衡性问题，在输入数据源关键字不平衡时会有更好的性能
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&#34;MYBOLTS8&#34;</span><span class="o">,</span> <span class="n">myBolts</span><span class="o">,</span><span class="n">4</span><span class="o">).</span><span class="na">partialKeyGrouping</span><span class="o">((</span><span class="s">&#34;MYSPOUT&#34;</span><span class="o">),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&#34;number&#34;</span><span class="o">));</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Java" data-lang="Java"><span class="line"><span class="cl"><span class="c1">// 1.随机分组、轮询、平均分配,随机派发stream里面的tuple，保证每个bolt task接收到的tuple数目大致相同。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">topologyBuilder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="s">&#34;MYBOLTS1&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">myBolts</span><span class="p">,</span><span class="n">4</span><span class="p">).</span><span class="na">shuffleGrouping</span><span class="p">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 2.按字段分组，比如，按&#34;user-id&#34;这个字段来分组，那么具有同样&#34;user-id&#34;的 tuple 会被分到相同的Bolt里的一个task。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">topologyBuilder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="s">&#34;MYBOLTS2&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">myBolts</span><span class="p">,</span><span class="n">2</span><span class="p">).</span><span class="na">fieldsGrouping</span><span class="p">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="p">,</span><span class="k">new</span><span class="w"> </span><span class="n">Fields</span><span class="p">(</span><span class="s">&#34;number&#34;</span><span class="p">)).</span><span class="na">setNumTasks</span><span class="p">(</span><span class="n">4</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 3.广播发送，对于每一个tuple，所有的bolts都会收到</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">topologyBuilder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="s">&#34;MYBOLTS3&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">myBolts</span><span class="p">,</span><span class="n">1</span><span class="p">).</span><span class="na">allGrouping</span><span class="p">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 4.Stream中的所有的tuple都会发送给同一个bolt任务处理，所有的tuple将会发送给拥有最小task_id的bolt任务处理</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">topologyBuilder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="s">&#34;MYBOLTS4&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">myBolts</span><span class="p">,</span><span class="n">4</span><span class="p">).</span><span class="na">globalGrouping</span><span class="p">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 5.不分组，这个分组的意思是说stream不关心到底怎样分组。目前这种分组和Shuffle grouping是一样的效果。 有一点不同的是storm会把使用none grouping的这个bolt放到这个bolt的订阅者同一个线程里面去执行（未来Storm如果可能的话会这样设计）。  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">topologyBuilder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="s">&#34;MYBOLTS5&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">myBolts</span><span class="p">,</span><span class="n">4</span><span class="p">).</span><span class="na">noneGrouping</span><span class="p">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 6.指向型分组， 这是一种比较特别的分组方法，用这种分组意味着消息（tuple）的发送者指定由消息接收者的哪个task处理这个消息。只有被声明为 Direct Stream 的消息流可以声明这种分组方法。而且这种消息tuple必须使用 emitDirect 方法来发射。消息处理者可以通过 TopologyContext 来获取处理它的消息的task的id (OutputCollector.emit方法也会返回task的id)   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//topologyBuilder.setBolt(&#34;MYBOLTS6&#34;, myBolts,4).directGrouping(&#34;MYSPOUT&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 7.本地或随机分组。如果目标bolt有一个或者多个task与源bolt的task在同一个工作进程中，tuple将会被随机发送给这些同进程中的tasks。否则，和普通的Shuffle Grouping行为一致 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">topologyBuilder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="s">&#34;MYBOLTS7&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">myBolts</span><span class="p">,</span><span class="n">4</span><span class="p">).</span><span class="na">localOrShuffleGrouping</span><span class="p">(</span><span class="s">&#34;MYSPOUT&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 8.这种方式与按字段分组很相似，根据定义的域来对数据流进行分组，不同的是，这种方式会考虑下游 Bolt 数据处理的均衡性问题，在输入数据源关键字不平衡时会有更好的性能</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">topologyBuilder</span><span class="p">.</span><span class="na">setBolt</span><span class="p">(</span><span class="s">&#34;MYBOLTS8&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">myBolts</span><span class="p">,</span><span class="n">4</span><span class="p">).</span><span class="na">partialKeyGrouping</span><span class="p">((</span><span class="s">&#34;MYSPOUT&#34;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Fields</span><span class="p">(</span><span class="s">&#34;number&#34;</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="6-并行度">6. 并行度</h3>
@@ -1181,28 +1180,26 @@ BoltDeclarer.setNumTasks(Number)</p>
 <p>有关ACK机制的执行效果，可参考下面这个项目</p>
 <hr>
 <h3 id="8-参考资料">8. 参考资料</h3>
-<p>[1].<a href="http://ifeve.com/apache-storm/" target="_blank" rel="noopener noreffer">Apache Storm 官方文档中文版</a></p>
-<p>[2].<a href="https://blog.csdn.net/uisoul/article/details/77989927" target="_blank" rel="noopener noreffer">最详细的Storm入门教程</a></p>
-<p>[3].<a href="http://www.cnblogs.com/intsmaze/p/5918087.html" target="_blank" rel="noopener noreffer">Storm的ack机制在项目应用中的坑</a></p>
+<p>[1].<a href="http://ifeve.com/apache-storm/" target="_blank" rel="noopener noreffer ">Apache Storm 官方文档中文版</a></p>
+<p>[2].<a href="https://blog.csdn.net/uisoul/article/details/77989927" target="_blank" rel="noopener noreffer ">最详细的Storm入门教程</a></p>
+<p>[3].<a href="http://www.cnblogs.com/intsmaze/p/5918087.html" target="_blank" rel="noopener noreffer ">Storm的ack机制在项目应用中的坑</a></p>
 <hr>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>更新于 2018-11-10</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/posts/storm/" data-title="Storm开箱" data-hashtags="开箱,技术"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/storm/" data-hashtag="开箱"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/storm/" data-title="Storm开箱"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/posts/storm/" data-title="Storm开箱"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/storm/" data-title="Storm开箱"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%BC%80%E7%AE%B1/">开箱</a>,&nbsp;<a href="/tags/%E6%8A%80%E6%9C%AF/">技术</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%BC%80%E7%AE%B1/">开箱</a>,&nbsp;<a href="/tags/%E6%8A%80%E6%9C%AF/">技术</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
@@ -1212,15 +1209,15 @@ BoltDeclarer.setNumTasks(Number)</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/tclm" target="_blank">余赋</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.139.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":1000},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":1000},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

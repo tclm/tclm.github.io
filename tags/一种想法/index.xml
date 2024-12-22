@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>一种想法 - 标签 - 余思所赋</title>
+        <link>http://localhost:1313/tags/%E4%B8%80%E7%A7%8D%E6%83%B3%E6%B3%95/</link>
+        <description>一种想法 - 标签 - 余思所赋</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Apr 2022 21:59:21 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E4%B8%80%E7%A7%8D%E6%83%B3%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>人就是人，而不是工具。</title>
+    <link>http://localhost:1313/posts/person_are_not_tools/</link>
+    <pubDate>Wed, 27 Apr 2022 21:59:21 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://localhost:1313/posts/person_are_not_tools/</guid>
+    <description><![CDATA[<p>这篇博文的起源是目前已经在 v2ex 上被隐藏的问题，“为什么中国教育的‘永恒主题’是教学生刷题和作弊”，内容来源于我自己的回答，以下是正文，与原回答相比，有一定修改。</p>]]></description>
+</item>
+</channel>
+</rss>
