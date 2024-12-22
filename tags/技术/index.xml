@@ -7,7 +7,7 @@
     <title>Storm开箱</title>
     <link>https://bd8faa.com/posts/storm/</link>
     <pubDate>Sat, 10 Nov 2018 16:35:43 &#43;0800</pubDate>
-    <author>作者</author>
+    <author>余赋</author>
     <guid>https://bd8faa.com/posts/storm/</guid>
     <description><![CDATA[<h3 id="1什么是-storm">1.什么是 Storm?</h3>
 <p>Storm 是一个<strong>分布式</strong>的，<strong>可靠</strong>的，<strong>容错</strong>的<strong>数据流处理</strong>系统。</p>
