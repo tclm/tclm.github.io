@@ -540,6 +540,7 @@
         function openNoise(){
             var noiseSwitch = parseFloat(document.getElementById('noiseVolume').value) != 0;
             if (noiseSwitch && !audioContext) {
+                gtag('event','Open_Noise',{'time':getCurrentTime()});
                 console.log("开启背噪");
                 // 创建一个新的 AudioContext
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -586,6 +587,7 @@
 
         function stopNoise() {
             if (audioContext && oscillator) {
+                gtag('event','Close_Noise',{'time':getCurrentTime()});
                 console.log("关闭背噪");
                 oscillator.stop();
                 audioContext.close().then(() => {
